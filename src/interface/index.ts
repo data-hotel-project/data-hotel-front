@@ -24,3 +24,13 @@ export interface iInputProps {
   showPass?: boolean;
   defaultValue?: string;
 }
+
+export interface iButtonStyledProps {
+  backgroundColor?: string;
+  buttonSize: "big" | "medium";
+  fontColor?: string;
+  borderColor?: string;
+  backgroundColorHover?: string;
+  borderColorHover?: string;
+  fontColorHover?: string;
+}
