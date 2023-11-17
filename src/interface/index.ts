@@ -1,7 +1,13 @@
 import { ReactNode } from "react";
+import { Path, UseFormGetValues, UseFormRegister } from "react-hook-form";
 
 export interface iProviderProps {
   children: ReactNode;
+}
+
+export interface ILoginRequest {
+  login: string;
+  password: string;
 }
 
 export interface iInputProps {
@@ -17,4 +23,14 @@ export interface iInputProps {
   type: string;
   showPass?: boolean;
   defaultValue?: string;
+}
+
+export interface iButtonStyledProps {
+  backgroundColor?: string;
+  buttonSize: "big" | "medium";
+  fontColor?: string;
+  borderColor?: string;
+  backgroundColorHover?: string;
+  borderColorHover?: string;
+  fontColorHover?: string;
 }
