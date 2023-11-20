@@ -1,18 +1,16 @@
 import { createContext, useContext } from "react";
-import { iProviderProps } from "../interface";
 
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { IChildrenProps } from "../../interface";
+import { iAuthProviderData } from "./@types";
 
-export interface iAuthProviderData {
-  navigate: NavigateFunction;
-}
 
 export const AuthContext = createContext<iAuthProviderData>(
   {} as iAuthProviderData
 );
 
-export const AuthProvider = ({ children }: iProviderProps) => {
-  const navigate = useNavigate();
+export const AuthProvider = ({ children }: IChildrenProps) => {
+  const navigate = useNavigate()  
 
   return (
     <AuthContext.Provider
