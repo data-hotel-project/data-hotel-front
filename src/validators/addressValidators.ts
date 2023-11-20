@@ -1,6 +1,6 @@
 import {z} from "zod"
 
-export const addressSchema  = z.object({
+export const addressSchemaForm  = z.object({
     street: z.string(),
     number: z.string(),
     city: z.string(),
@@ -8,4 +8,4 @@ export const addressSchema  = z.object({
     complement: z.string()
 })
 
-export type TAddressCreateData = z.infer<typeof addressSchema>
+export type TAddressCreateData = z.infer<typeof addressSchemaForm>
