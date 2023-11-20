@@ -3,23 +3,26 @@ import { iLoginRequest } from "../../interface";
 import Input from "../../components/Input";
 import Button from "../../components/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { employeeSchemaLogin } from "../../validators/employeeValidators";
+// import { useEmployee } from "../../contexts/EmployeeContext";
+import { useGuest } from "../../contexts/GuestContext";
+import { guestSchemaLogin } from "../../validators/guestValidators";
 
 const Login = () => {
+  // const { employeeLogin } = useEmployee()
+  const { guestLogin } = useGuest();
+
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
   } = useForm<iLoginRequest>({
-    resolver: zodResolver(employeeSchemaLogin),
+    resolver: zodResolver(guestSchemaLogin),
   });
 
   const onSubmit = async (data: iLoginRequest) => {
-    try {
-      await userLogin(data);
-      console.log("login", data);
-    } catch (error) {}
+    console.log("oi", data);
+    await guestLogin(data);
   };
 
   return (
@@ -28,12 +31,11 @@ const Login = () => {
         <h1>Login</h1>
         <Input
           label="E-mail | Username"
-          type="string"
+          type="text"
           errorMessage={errors.username?.message}
           register={register}
-          id="email"
+          id="username"
           getValues={getValues}
-          login={true}
         />
         <Input
           label="Password"
@@ -46,7 +48,7 @@ const Login = () => {
         />
         <a href="/">Forgot the password?</a>
         <a href="/register">Don't you have an account?</a>
-        <Button buttonSize={"medium"}>Login</Button>
+        <Button size={"medium"}>Login</Button>
       </div>
     </form>
   );
