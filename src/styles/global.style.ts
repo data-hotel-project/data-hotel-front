@@ -54,6 +54,7 @@ const GlobalStyle = createGlobalStyle`
         vertical-align: baseline;
         font-family: var(--font);
         list-style: none;
+        color: #FFFFFF
     }
 
     article, aside, details, figcaption, figure, 

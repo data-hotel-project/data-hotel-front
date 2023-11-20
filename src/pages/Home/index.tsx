@@ -1,5 +1,7 @@
+import Header from "../../components/Header";
 import Input from "../../components/Input";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { StyledBody, StyledH1 } from "./style";
 
 export const Home = () => {
   const {
@@ -14,8 +16,12 @@ export const Home = () => {
   };
 
   return (
-    <div>
-      <h2>Home</h2>
+    <>
+        <Header />
+        <StyledBody>
+          <StyledH1>GRAND DATA HOTEL</StyledH1>
+        </StyledBody>
+      {/* <h2>Home</h2> */}
       {/* <form
         onSubmit={handleSubmit(onSubmit)}
         style={{
@@ -48,6 +54,6 @@ export const Home = () => {
           Cadastre-se
         </button>
       </form> */}
-    </div>
+    </>
   );
 };
