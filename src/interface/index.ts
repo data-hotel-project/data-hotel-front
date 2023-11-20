@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Path, UseFormGetValues, UseFormRegister } from "react-hook-form";
 
-export interface iProviderProps {
+export interface IChildrenProps {
   children: ReactNode;
 }
 
