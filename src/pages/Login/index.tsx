@@ -1,10 +1,12 @@
-import { useForm } from "react-hook-form";
+import { RegisterOptions, UseFormRegisterReturn, useForm } from "react-hook-form";
 import { ILoginRequest } from "../../interface";
+import Input from "../../components/Input";
 
 const Login = () => {
   const {
-    // register,
+    register,
     handleSubmit,
+    getValues
     formState: { errors },
   } = useForm<ILoginRequest>({
     // resolver: yupResolver(userLoginSchema),
@@ -21,9 +23,10 @@ const Login = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <h1>Login</h1>
-        <label>E-mail | Username</label>
+        <Input label="E-mail | Username" type="string" errorMessage={errors.email?.message} register={register} id="email" getValues={getValues}/>
+        <label></label>
         <input></input>
-        <span>{errors.login?.message}</span>
+        <span>{errors.email?.message}</span>
         <label>Password</label>
         <input></input>
         <span>{errors.password?.message}</span>
