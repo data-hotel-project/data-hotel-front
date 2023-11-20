@@ -5,8 +5,8 @@ export interface IChildrenProps {
   children: ReactNode;
 }
 
-export interface ILoginRequest {
-  email: string;
+export interface iLoginRequest {
+  username: string;
   password: string;
 }
 

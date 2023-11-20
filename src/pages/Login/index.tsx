@@ -1,21 +1,24 @@
-import { RegisterOptions, UseFormRegisterReturn, useForm } from "react-hook-form";
-import { ILoginRequest } from "../../interface";
+import { useForm } from "react-hook-form";
+import { iLoginRequest } from "../../interface";
 import Input from "../../components/Input";
+import Button from "../../components/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { employeeSchemaLogin } from "../../validators/employeeValidators";
 
 const Login = () => {
   const {
     register,
     handleSubmit,
-    getValues
+    getValues,
     formState: { errors },
-  } = useForm<ILoginRequest>({
-    // resolver: yupResolver(userLoginSchema),
+  } = useForm<iLoginRequest>({
+    resolver: zodResolver(employeeSchemaLogin),
   });
 
-  const onSubmit = async (data: ILoginRequest) => {
+  const onSubmit = async (data: iLoginRequest) => {
     try {
-    //   await LoginUser(data);
-    console.log("login", data);
+      await userLogin(data);
+      console.log("login", data);
     } catch (error) {}
   };
 
@@ -23,16 +26,27 @@ const Login = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <h1>Login</h1>
-        <Input label="E-mail | Username" type="string" errorMessage={errors.email?.message} register={register} id="email" getValues={getValues}/>
-        <label></label>
-        <input></input>
-        <span>{errors.email?.message}</span>
-        <label>Password</label>
-        <input></input>
-        <span>{errors.password?.message}</span>
-        <a href="">Forgot the password?</a>
-        <a href="">Don't you have an account?</a>
-        <button>Login</button>
+        <Input
+          label="E-mail | Username"
+          type="string"
+          errorMessage={errors.username?.message}
+          register={register}
+          id="email"
+          getValues={getValues}
+          login={true}
+        />
+        <Input
+          label="Password"
+          type="password"
+          errorMessage={errors.password?.message}
+          register={register}
+          id="password"
+          getValues={getValues}
+          showPass={true}
+        />
+        <a href="/">Forgot the password?</a>
+        <a href="/register">Don't you have an account?</a>
+        <Button buttonSize={"medium"}>Login</Button>
       </div>
     </form>
   );
