@@ -5,8 +5,8 @@ export interface IChildrenProps {
   children: ReactNode;
 }
 
-export interface ILoginRequest {
-  login: string;
+export interface iLoginRequest {
+  username: string;
   password: string;
 }
 
@@ -27,7 +27,7 @@ export interface iInputProps {
 
 export interface iButtonStyledProps {
   backgroundColor?: string;
-  buttonSize: "big" | "medium";
+  size: "big" | "medium";
   fontColor?: string;
   borderColor?: string;
   backgroundColorHover?: string;

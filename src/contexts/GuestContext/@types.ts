@@ -2,7 +2,7 @@ import { NavigateFunction } from "react-router-dom";
 import { iLoginRequest } from "../../interface";
 
 
-export interface IEmployeeContext {
+export interface IGuestContext {
   navigate: NavigateFunction,
-  employeeLogin: (data: iLoginRequest) => Promise<void>;
+  guestLogin: (data: iLoginRequest) => Promise<void>;
 }

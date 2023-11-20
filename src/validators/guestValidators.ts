@@ -21,4 +21,4 @@ export const guestSchemaLogin = z.object({
     password: z.string()
 })
 
-export type TGuestLonginData = z.infer<typeof guestSchemaLogin>
+export type TGuestLoginData = z.infer<typeof guestSchemaLogin>
