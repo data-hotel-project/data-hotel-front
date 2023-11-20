@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { addressSchema } from "./addressValidators";
+import { addressSchemaForm } from "./addressValidators";
 
 export const employeeSchemaForm = z.object({
   username: z.string(),
@@ -12,18 +12,12 @@ export const employeeSchemaForm = z.object({
   contact_aditional: z.string().optional(),
   job_function: z.string(),
   is_working: z.string(),
-  address: addressSchema,
+  address: addressSchemaForm,
   hotel: z.string(),
 });
 
 export type TEmployeeFormData = z.infer<typeof employeeSchemaForm>
 
-export const employeeSchema = employeeSchemaForm.extend({
-  is_staff: z.boolean(),
-  is_superuser: z.boolean(),
-});
-
-export type TEmployeeData = z.infer<typeof employeeSchema>
 
 export const employeeSchemaLogin = z.object({
     username: z.string(),

@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { IEmployeeContext } from "./@types";
 import { api } from "../../server/Api";
 import { toast } from "react-toastify";
-import { IChildrenProps } from "../../interface";
-import { TEmployeeData, TEmployeeFormData, TEmployeeLonginData } from "../../validators/employeeValidators";
+import { IChildrenProps, iEmployee } from "../../interface";
+import { TEmployeeFormData, TEmployeeLonginData } from "../../validators/employeeValidators";
 
 export const EmployeeContext = createContext<IEmployeeContext>(
   {} as IEmployeeContext
@@ -15,7 +15,7 @@ export const EmployeeContext = createContext<IEmployeeContext>(
 export const EmployeeProvider = ({ children }: IChildrenProps) => {
   const navigate = useNavigate();
 
-  const [employee, setEmployee] = useState<TEmployeeData | null>(null)
+  const [employee, setEmployee] = useState<iEmployee | null>(null)
 
   const employeeToken = localStorage.getItem("@data_hotel-employee:TOKEN");
   const employeeId = localStorage.getItem("@data_hotel-employee:ID");
