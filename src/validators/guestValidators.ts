@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { addressSchemaForm } from "./addressValidators";
+import { addressSchemaForm, addressSchemaUpdateForm } from "./addressValidators";
 
 export const guestSchemaForm = z.object({
   username: z.string(),
@@ -15,10 +15,16 @@ export const guestSchemaForm = z.object({
 
 export type TGuestFormData = z.infer<typeof guestSchemaForm>
 
+export const guestSchemaUpdateForm = z.object({
+  username: z.string().optional(),
+  email: z.string().optional(),
+  password: z.string().optional(),
+  contact: z.string().optional(),
+  emergency_num: z.string().optional(),
+  contact_aditional: z.string().optional(),
+  address: addressSchemaUpdateForm,
+});
 
-export const guestSchemaLogin = z.object({
-    username: z.string(),
-    password: z.string()
-})
+export type TGuestUpdateFormData = z.infer<typeof guestSchemaUpdateForm>
 
-export type TGuestLonginData = z.infer<typeof guestSchemaLogin>
+

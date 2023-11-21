@@ -9,3 +9,13 @@ export const addressSchemaForm  = z.object({
 })
 
 export type TAddressCreateData = z.infer<typeof addressSchemaForm>
+
+export const addressSchemaUpdateForm  = z.object({
+    street: z.string().optional(),
+    number: z.string().optional(),
+    city: z.string().optional(),
+    state: z.string().optional(),
+    complement: z.string().optional()
+})
+
+export type TAddressUpdateData = z.infer<typeof addressSchemaForm>
