@@ -27,4 +27,10 @@ export const guestSchemaUpdateForm = z.object({
 
 export type TGuestUpdateFormData = z.infer<typeof guestSchemaUpdateForm>
 
+export const guestSchemaLogin = z.object({
+  username: z.string(),
+  password: z.string()
+})
+export type TGuestLoginData = z.infer<typeof guestSchemaLogin>
+
 

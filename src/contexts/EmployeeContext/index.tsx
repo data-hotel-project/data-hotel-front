@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { IChildrenProps, iEmployee } from "../../interface";
 import {
   TEmployeeFormData,
+  TEmployeeLonginData,
   TEmployeeUpdateFormData,
 } from "../../validators/employeeValidators";
 
@@ -13,7 +14,7 @@ export const EmployeeContext = createContext<IEmployeeContext>(
   {} as IEmployeeContext
 );
 
-export const employeeProvider = ({ children }: IChildrenProps) => {
+export const EmployeeProvider = ({ children }: IChildrenProps) => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState<iEmployee | null>(null);
@@ -21,6 +22,21 @@ export const employeeProvider = ({ children }: IChildrenProps) => {
 
   // const token = localStorage.getItem("@DataHotel:TOKEN");
   const userId = localStorage.getItem("@DataHotel:ID");
+
+  const loginEmployee = async (formData: TEmployeeLonginData) => {
+    try {
+      const response = await api.post("/employee/login/", formData);
+      console.log(response.data)
+      setUser(response.data.user);
+      localStorage.setItem("@DataHotel:TOKEN", response.data.accessToken);
+      localStorage.setItem("@DataHotel:ID", response.data.user.employee.id);
+      toast.success("Login efetuado com sucesso");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("Tente novamente");
+    }
+  };
 
   const createEmployee = async (formData: TEmployeeFormData) => {
     try {
@@ -85,6 +101,7 @@ export const employeeProvider = ({ children }: IChildrenProps) => {
         setUser,
         employees,
         setEmployees,
+        loginEmployee,
         createEmployee,
         listEmployees,
         retrieveEmployee,
