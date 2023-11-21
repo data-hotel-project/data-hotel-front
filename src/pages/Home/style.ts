@@ -1,4 +1,51 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const openAnimate = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`;
+
+const closeAnimate = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+`;
+
+export const MenuContainer = styled.div`
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  animation: ${({ open }) => (open ? openAnimate : closeAnimate)} 0.3s both;
+`;
+
+export const ToggleButton = styled.button`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  background-color: #333;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  padding: 5px 10px;
+`;
 
 export const StyledBody = styled.div`
   position: relative;
