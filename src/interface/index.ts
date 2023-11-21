@@ -49,8 +49,9 @@ export interface iHotel {
   name: string;
   email: string;
   num_rooms: number;
-  image: string;
   address: iAddress;
+  image: string;
+  full_url: string;
 }
 
 export interface iEmployee {
@@ -99,10 +100,10 @@ export interface iRoom {
 }
 
 export interface iReservation {
-  id:string
-  quantity:number
-  entry_date:string
-  departure_date:string
-  guest:string
-  hotel:string
+  id: string;
+  quantity: number;
+  entry_date: string;
+  departure_date: string;
+  guest: string;
+  hotel: string;
 }
