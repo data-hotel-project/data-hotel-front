@@ -18,8 +18,10 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
   const [guest, setGuest] = useState<iGuest | null>(null);
   const [guests, setGuests] = useState<iGuest[] | null>(null);
 
-  // const token = localStorage.getItem("@DataHotel:TOKEN");
+  const token = localStorage.getItem("@DataHotel:TOKEN");
   const userId = localStorage.getItem("@DataHotel:ID");
+
+  
 
   const loginGuest = async (formData: TGuestLoginData) => {
     console.log("olá");
@@ -71,7 +73,11 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
 
   const updateGuest = async (formData: TGuestUpdateFormData) => {
     try {
-      const response = await api.post(`/guest/${userId}`, formData);
+      const response = await api.post(`/guest/${userId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setGuest(response.data);
       navigate(`/${userId}/dashboard`);
     } catch (error) {
@@ -82,7 +88,11 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
 
   const deleteGuest = async () => {
     try {
-      const response = await api.post(`/guest/${userId}`);
+      const response = await api.post(`/guest/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       console.log(response.data);
       toast.success("Usuário deletado");
       setGuest(null);
