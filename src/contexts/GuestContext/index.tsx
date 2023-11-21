@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { IChildrenProps, iGuest } from "../../interface";
 import {
   TGuestFormData,
+  TGuestLoginData,
   TGuestUpdateFormData,
 } from "../../validators/guestValidators";
 
@@ -13,7 +14,7 @@ export const GuestContext = createContext<IGuestContext>(
   {} as IGuestContext
 );
 
-export const guestProvider = ({ children }: IChildrenProps) => {
+export const GuestProvider = ({ children }: IChildrenProps) => {
   const navigate = useNavigate();
 
   const [guest, setGuest] = useState<iGuest | null>(null);
@@ -21,6 +22,22 @@ export const guestProvider = ({ children }: IChildrenProps) => {
 
   // const token = localStorage.getItem("@DataHotel:TOKEN");
   const userId = localStorage.getItem("@DataHotel:ID");
+
+  const loginGuest = async (formData: TGuestLoginData) => {
+    console.log("olá")
+    try {
+        const response = await api.post("/guest/login/", formData);
+        // console.log(response.data)
+        setGuest(response.data.user);
+        localStorage.setItem("@DataHotel:TOKEN", response.data.accessToken);
+        localStorage.setItem("@DataHotel:ID", response.data.user.guest.id);
+        toast.success("Login efetuado com sucesso");
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+        toast.error("Tente novamente");
+      }
+    };
 
   const createGuest = async (formData: TGuestFormData) => {
     try {
@@ -85,6 +102,7 @@ export const guestProvider = ({ children }: IChildrenProps) => {
         setGuest,
         guests,
         setGuests,
+        loginGuest,
         createGuest,
         listGuests,
         retrieveGuest,
