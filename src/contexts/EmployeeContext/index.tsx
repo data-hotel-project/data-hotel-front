@@ -17,13 +17,13 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
 
   const [employee, setEmployee] = useState<iEmployee | null>(null)
 
-  const employeeToken = localStorage.getItem("@data_hotel-employee:TOKEN");
-  const employeeId = localStorage.getItem("@data_hotel-employee:ID");
+  const token = localStorage.getItem("@DataHotel:TOKEN");
+  const userId = localStorage.getItem("@DataHotel:ID");
 
   const employeeRegister = async (formData: TEmployeeFormData) => {
     try {
       const response = await api.post("/employee/", formData);
-      setEmployee(response.data.user);
+      // employeeToken = response.data.access
       // localStorage.setItem("@data_hotel-employee:TOKEN", response.data.accessToken);
       // localStorage.setItem("@data_hotel-employee:ID", response.data.user.id);
       toast.success("Cadastro com sucesso");
@@ -34,7 +34,7 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
     }
   };
 
-  const userLogin = async (formData: TEmployeeLonginData) => {
+  const employeeLogin = async (formData: TEmployeeLonginData) => {
     try {
       const response = await api.post("/login", formData);
       setEmployee(response.data.user);
