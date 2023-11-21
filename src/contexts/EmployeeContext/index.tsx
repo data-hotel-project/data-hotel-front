@@ -20,8 +20,8 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
   const [user, setUser] = useState<iEmployee | null>(null);
   const [employees, setEmployees] = useState<iEmployee[] | null>(null);
 
-  // const token = localStorage.getItem("@DataHotel:TOKEN");
-  const userId = localStorage.getItem("@DataHotel:ID");
+  const token = localStorage.getItem("@DataHotel:TOKEN");
+  const userId = localStorage.getItem("@DataHotel:userID");
 
   const loginEmployee = async (formData: TEmployeeLonginData) => {
     try {
@@ -40,7 +40,11 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
 
   const createEmployee = async (formData: TEmployeeFormData) => {
     try {
-      const response = await api.post("/employee/", formData);
+      const response = await api.post("/employee/", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       console.log(response.data);
       toast.success("Cadastro com sucesso");
       navigate("/login");
@@ -72,7 +76,11 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
 
   const updateEmployee = async (formData: TEmployeeUpdateFormData) => {
     try {
-      const response = await api.post(`/employee/${userId}`, formData);
+      const response = await api.post(`/employee/${userId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setUser(response.data);
       navigate(`/${userId}/dashboard`);
     } catch (error) {
@@ -83,7 +91,11 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
 
   const deleteEmployee = async () => {
     try {
-      const response = await api.post(`/employee/${userId}`);
+      const response = await api.post(`/employee/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       console.log(response.data);
       toast.success("Funcionário desligado");
       setUser(null);
