@@ -1,18 +1,27 @@
 import { createContext, useContext, useState } from "react";
-import { IGuestContext } from "./@types";
-import { IChildrenProps, iGuest } from "../../interface";
 import { useNavigate } from "react-router-dom";
+import { IGuestContext } from "./@types";
 import { api } from "../../server/Api";
 import { toast } from "react-toastify";
-import { TGuestLoginData } from "../../validators/guestValidators";
+import { IChildrenProps, iGuest } from "../../interface";
+import {
+  TGuestFormData,
+  TGuestLoginData,
+  TGuestUpdateFormData,
+} from "../../validators/guestValidators";
 
 export const GuestContext = createContext<IGuestContext>({} as IGuestContext);
 
 export const GuestProvider = ({ children }: IChildrenProps) => {
-  const [guest, setGuest] = useState<iGuest | null>(null);
   const navigate = useNavigate();
 
-  const guestLogin = async (formData: TGuestLoginData) => {
+  const [guest, setGuest] = useState<iGuest | null>(null);
+  const [guests, setGuests] = useState<iGuest[] | null>(null);
+
+  // const token = localStorage.getItem("@DataHotel:TOKEN");
+  const userId = localStorage.getItem("@DataHotel:ID");
+
+  const loginGuest = async (formData: TGuestLoginData) => {
     console.log("olá");
     try {
       const response = await api.post("/guest/login/", formData);
@@ -28,11 +37,75 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
     }
   };
 
+  const createGuest = async (formData: TGuestFormData) => {
+    try {
+      const response = await api.post("/guest/", formData);
+      console.log(response.data);
+      toast.success("Cadastro com sucesso");
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`);
+    }
+  };
+
+  const listGuests = async () => {
+    try {
+      const response = await api.post("/guest/");
+      setGuests(response.data);
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`);
+    }
+  };
+
+  const retrieveGuest = async () => {
+    try {
+      const response = await api.post(`/guest/${userId}`);
+      setGuest(response.data);
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`);
+    }
+  };
+
+  const updateGuest = async (formData: TGuestUpdateFormData) => {
+    try {
+      const response = await api.post(`/guest/${userId}`, formData);
+      setGuest(response.data);
+      navigate(`/${userId}/dashboard`);
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`);
+    }
+  };
+
+  const deleteGuest = async () => {
+    try {
+      const response = await api.post(`/guest/${userId}`);
+      console.log(response.data);
+      toast.success("Usuário deletado");
+      setGuest(null);
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`);
+    }
+  };
+
   return (
     <GuestContext.Provider
       value={{
         navigate,
-        guestLogin,
+        guest,
+        setGuest,
+        guests,
+        setGuests,
+        loginGuest,
+        createGuest,
+        listGuests,
+        retrieveGuest,
+        updateGuest,
+        deleteGuest,
       }}
     >
       {children}

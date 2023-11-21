@@ -4,41 +4,30 @@ import { IEmployeeContext } from "./@types";
 import { api } from "../../server/Api";
 import { toast } from "react-toastify";
 import { IChildrenProps, iEmployee } from "../../interface";
-import { TEmployeeLoginData } from "../../validators/employeeValidators";
+import {
+  TEmployeeFormData,
+  TEmployeeLonginData,
+  TEmployeeUpdateFormData,
+} from "../../validators/employeeValidators";
 
 export const EmployeeContext = createContext<IEmployeeContext>(
   {} as IEmployeeContext
 );
 
-  
-
 export const EmployeeProvider = ({ children }: IChildrenProps) => {
   const navigate = useNavigate();
 
-  const [employee, setEmployee] = useState<iEmployee | null>(null)
+  const [user, setUser] = useState<iEmployee | null>(null);
+  const [employees, setEmployees] = useState<iEmployee[] | null>(null);
 
-  const employeeToken = localStorage.getItem("@data_hotel-employee:TOKEN");
-  const employeeId = localStorage.getItem("@data_hotel-employee:ID");
+  // const token = localStorage.getItem("@DataHotel:TOKEN");
+  const userId = localStorage.getItem("@DataHotel:ID");
 
-  const employeeRegister = async (formData: TEmployeeFormData) => {
-    try {
-      const response = await api.post("/employee/", formData);
-      setEmployee(response.data.user);
-      // localStorage.setItem("@data_hotel-employee:TOKEN", response.data.accessToken);
-      // localStorage.setItem("@data_hotel-employee:ID", response.data.user.id);
-      toast.success("Cadastro com sucesso");
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-      toast.error("Tente novamente");
-    }
-  };
-
-  const employeeLogin = async (formData: TEmployeeLoginData) => {
+  const loginEmployee = async (formData: TEmployeeLonginData) => {
     try {
       const response = await api.post("/employee/login/", formData);
       console.log(response.data)
-      setEmployee(response.data.user);
+      setUser(response.data.user);
       localStorage.setItem("@DataHotel:TOKEN", response.data.accessToken);
       localStorage.setItem("@DataHotel:ID", response.data.user.employee.id);
       toast.success("Login efetuado com sucesso");
@@ -49,11 +38,75 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
     }
   };
 
+  const createEmployee = async (formData: TEmployeeFormData) => {
+    try {
+      const response = await api.post("/employee/", formData);
+      console.log(response.data);
+      toast.success("Cadastro com sucesso");
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`);
+    }
+  };
+
+  const listEmployees = async () => {
+    try {
+      const response = await api.post("/employee/");
+      setEmployees(response.data);
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`);
+    }
+  };
+
+  const retrieveEmployee = async () => {
+    try {
+      const response = await api.post(`/employee/${userId}`);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`);
+    }
+  };
+
+  const updateEmployee = async (formData: TEmployeeUpdateFormData) => {
+    try {
+      const response = await api.post(`/employee/${userId}`, formData);
+      setUser(response.data);
+      navigate(`/${userId}/dashboard`);
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`);
+    }
+  };
+
+  const deleteEmployee = async () => {
+    try {
+      const response = await api.post(`/employee/${userId}`);
+      console.log(response.data);
+      toast.success("Funcionário desligado");
+      setUser(null);
+    } catch (error) {
+      console.log(error);
+      toast.error(`${error}`);
+    }
+  };
+
   return (
     <EmployeeContext.Provider
       value={{
         navigate,
-        employeeLogin
+        user,
+        setUser,
+        employees,
+        setEmployees,
+        loginEmployee,
+        createEmployee,
+        listEmployees,
+        retrieveEmployee,
+        updateEmployee,
+        deleteEmployee,
       }}
     >
       {children}

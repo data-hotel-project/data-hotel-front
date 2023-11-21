@@ -3,12 +3,18 @@ import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import RoutesMain from "./routes";
 import "react-toastify/dist/ReactToastify.css";
+import { EmployeeProvider } from "./contexts/EmployeeContext";
+import { GuestProvider } from "./contexts/GuestContext";
 
 function App() {
   return (
     <>
       <AuthProvider>
-        <RoutesMain />
+        <EmployeeProvider>
+          <GuestProvider>
+            <RoutesMain />
+          </GuestProvider>
+        </EmployeeProvider>
       </AuthProvider>
       <ToastContainer
         position="top-right"
