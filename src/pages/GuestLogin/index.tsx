@@ -21,7 +21,6 @@ const Login = () => {
   });
 
   const onSubmit = async (data: iLoginRequest) => {
-    console.log("oi", data);
     await loginGuest(data);
   };
 

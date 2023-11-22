@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { IHotelContext } from "./@types";
 import { api } from "../../server/Api";
 import { toast } from "react-toastify";
@@ -31,9 +30,9 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
   const [reservation, setReservation] = useState<iReservation | null>(null);
   const [reservations, setReservations] = useState<iReservation[] | null>(null);
 
-  const { token, userId, navigate } = useContext(AuthContext)
+  const { token, userId, hotelId, navigate } = useContext(AuthContext)
   
-  const hotelId = localStorage.getItem("@DataHotel:hotelID");
+  
 
   const createHotel = async (formData: THotelCreateFormData) => {
     try {
