@@ -29,6 +29,11 @@ export const employeeSchemaUpdateForm = z.object({
   is_working: z.string(),
   address: addressSchemaUpdateForm,
   hotel: z.string(),
+  password_confirmation: z.string(),
+})
+.refine((data) => data.password === data.password_confirmation, {
+  message: "Senhas não são iguais!",
+  path: ["password_confirmation"],
 });
 
 export type TEmployeeUpdateFormData = z.infer<typeof employeeSchemaUpdateForm>

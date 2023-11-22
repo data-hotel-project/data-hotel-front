@@ -11,6 +11,11 @@ export const guestSchemaForm = z.object({
   emergency_num: z.string(),
   contact_aditional: z.string().optional(),
   address: addressSchemaForm,
+  password_confirmation: z.string(),
+})
+.refine((data) => data.password === data.password_confirmation, {
+  message: "Senhas não são iguais!",
+  path: ["password_confirmation"],
 });
 
 export type TGuestFormData = z.infer<typeof guestSchemaForm>
