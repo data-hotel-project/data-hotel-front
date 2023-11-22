@@ -9,32 +9,30 @@ import {
   TEmployeeLonginData,
   TEmployeeUpdateFormData,
 } from "../../validators/employeeValidators";
+import { AuthContext } from "../AuthContext";
 
 export const EmployeeContext = createContext<IEmployeeContext>(
   {} as IEmployeeContext
 );
 
 export const EmployeeProvider = ({ children }: IChildrenProps) => {
-  const navigate = useNavigate();
 
   const [user, setUser] = useState<iEmployee | null>(null);
   const [employees, setEmployees] = useState<iEmployee[] | null>(null);
 
-  const token = localStorage.getItem("@DataHotel:TOKEN");
-  const userId = localStorage.getItem("@DataHotel:userID");
+  const { token, userId, navigate } = useContext(AuthContext)
 
   const loginEmployee = async (formData: TEmployeeLonginData) => {
     try {
       const response = await api.post("/employee/login/", formData);
-      console.log(response.data)
       setUser(response.data.user);
-      localStorage.setItem("@DataHotel:TOKEN", response.data.accessToken);
-      localStorage.setItem("@DataHotel:ID", response.data.user.employee.id);
+      localStorage.setItem("@DataHotel:TOKEN", response.data.access);
+      localStorage.setItem("@DataHotel:ID", response.data.user.id);
       toast.success("Login efetuado com sucesso");
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error("Tente novamente");
+      toast.error("username ou senha inválido");
     }
   };
 

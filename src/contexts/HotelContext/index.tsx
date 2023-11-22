@@ -16,11 +16,11 @@ import {
   TReservationCreateData,
   TReservationUpdateData,
 } from "../../validators/reservationValidators";
+import { AuthContext } from "../AuthContext";
 
 export const HotelContext = createContext<IHotelContext>({} as IHotelContext);
 
 export const HotelProvider = ({ children }: IChildrenProps) => {
-  const navigate = useNavigate();
 
   const [hotel, setHotel] = useState<iHotel | null>(null);
   const [hotels, setHotels] = useState<iHotel[] | null>(null);
@@ -31,8 +31,8 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
   const [reservation, setReservation] = useState<iReservation | null>(null);
   const [reservations, setReservations] = useState<iReservation[] | null>(null);
 
-  const token = localStorage.getItem("@DataHotel:TOKEN");
-  const userId = localStorage.getItem("@DataHotel:userID");
+  const { token, userId, navigate } = useContext(AuthContext)
+  
   const hotelId = localStorage.getItem("@DataHotel:hotelID");
 
   const createHotel = async (formData: THotelCreateFormData) => {
