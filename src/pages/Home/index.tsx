@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { MenuContainer, StyledBody, StyledH1, ToggleButton } from "./style";
+import { StyledBody, StyledH1 } from "./style";
+import { StyledHeader } from "../../components/Header/style";
 
 export const Home:React.FC = () => {
   const {
@@ -11,10 +11,7 @@ export const Home:React.FC = () => {
     getValues,
     formState: { errors },
   } = useForm<any>({});
-  const [menuOpen, setMenuOpen] = useState(true);
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+
 
   const onSubmit: SubmitHandler<any> = async (formData) => {
     console.log(formData);
@@ -22,14 +19,10 @@ export const Home:React.FC = () => {
 
   return (
     <>
-      <ToggleButton onClick={toggleMenu}>
-        {menuOpen?'Close Menu':'Open Menu'}
-      </ToggleButton>
-      <MenuContainer open={menuOpen}>
-      </MenuContainer>
+      <StyledHeader />
       <StyledBody>
         <Header />
-        {/* <StyledH1>GRAND DATA HOTEL</StyledH1> */}
+        <StyledH1>GRAND DATA HOTEL</StyledH1>
       </StyledBody>
       {/* <h2>Home</h2> */}
       {/* <form
