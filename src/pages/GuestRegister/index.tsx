@@ -54,6 +54,15 @@ const GuestRegister = () => {
           showPass={true}
         />
         <Input
+          label="Confirme Password"
+          type="password"
+          errorMessage={errors.password_confirmation?.message}
+          register={register}
+          id="password_confirmation"
+          getValues={getValues}
+          showPass={true}
+        />
+        <Input
           label="Data de Nascimento"
           type="text"
           errorMessage={errors.birthdate?.message}
