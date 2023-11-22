@@ -26,13 +26,12 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
   
 
   const loginGuest = async (formData: TGuestLoginData) => {
-    console.log("olá")
     try {
         const response = await api.post("/guest/login/", formData);
-        // console.log(response.data)
+        console.log(response.data)
         setGuest(response.data.user);
         localStorage.setItem("@DataHotel:TOKEN", response.data.accessToken);
-        localStorage.setItem("@DataHotel:ID", response.data.user.guest.id);
+        localStorage.setItem("@DataHotel:ID", response.data.user.id);
         toast.success("Login efetuado com sucesso");
         navigate("/");
       } catch (error) {
