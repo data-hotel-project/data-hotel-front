@@ -12,10 +12,15 @@ export const AuthContext = createContext<iAuthProviderData>(
 export const AuthProvider = ({ children }: IChildrenProps) => {
   const navigate = useNavigate()  
 
+  const token = localStorage.getItem("@DataHotel:TOKEN");
+  const userId = localStorage.getItem("@DataHotel:ID");
+
   return (
     <AuthContext.Provider
       value={{
         navigate,
+        token,
+        userId,
       }}
     >
       {children}
