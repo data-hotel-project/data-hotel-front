@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { IEmployeeContext } from "./@types";
 import { api } from "../../server/Api";
 import { toast } from "react-toastify";
