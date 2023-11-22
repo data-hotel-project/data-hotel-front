@@ -69,6 +69,14 @@ const GlobalStyle = createGlobalStyle`
 	    list-style: none;
     }
 
+    button {
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
     blockquote, q {
 	    quotes: none;
     }

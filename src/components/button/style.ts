@@ -6,9 +6,9 @@ export const StyledButton = styled.button <iButtonStyledProps>`
   font-weight: 600;
   background-color: ${(props) => props.backgroundColor || "var(--primary-normal)"}; // ajustar valor default
   color: ${(props) => props.fontColor || "var(--primary-light)"};
-  font-size: ${(props) => (props.buttonSize === "big" ? "16px" : "14px")};
+  font-size: ${(props) => (props.size === "big" ? "16px" : "14px")};
   padding: ${(props) =>
-    props.buttonSize === "big" ? "12px" : "8px 20px"};
+    props.size === "big" ? "12px" : "8px 20px"};
   border-radius: 50%;
   border: 1.5px solid ${(props) => props.borderColor || "transparent"};
   transition: background-color 0.2s;
