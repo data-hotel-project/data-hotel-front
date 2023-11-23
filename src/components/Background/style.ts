@@ -11,4 +11,5 @@ export const StyledBackground = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
+  overflow-y: auto;
 `;
