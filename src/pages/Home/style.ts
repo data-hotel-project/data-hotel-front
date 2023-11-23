@@ -57,6 +57,7 @@ export const StyledBody = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
+  overflow-y: auto;
 
   /* @media (min-width: 800px) {
     position: static;

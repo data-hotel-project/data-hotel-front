@@ -65,6 +65,7 @@ const GlobalStyle = createGlobalStyle`
     body {
 	    line-height: 1;
         height: 100vh;
+        font-family: 'Roboto', sans-serif;
     }
 
     ol, ul {
@@ -73,6 +74,10 @@ const GlobalStyle = createGlobalStyle`
 
     blockquote, q {
 	    quotes: none;
+    }
+
+    button {
+        cursor: pointer;
     }
 
     blockquote:before, blockquote:after,
