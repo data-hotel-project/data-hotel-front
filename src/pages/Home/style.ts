@@ -25,23 +25,36 @@ export const MenuContainer = styled.div`
   left: 0;
   height: 100%;
   width: 200px;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--primary-normal);
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   animation: ${({ open }) => (open ? openAnimate : closeAnimate)} 0.3s both;
+
+  a {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 `;
 
+export const Ancor = styled.a`
+  font-size: 20px;
+  height: 100px;
+  transition: 0.3s;
+
+  &.active {
+    background-color: var(--primary-light-active);
+  }
+`
+
 export const ToggleButton = styled.button`
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
-  background-color: #333;
-  color: #fff;
+  z-index: 3;
+  background-color: transparent;
+  color: var(--primary-light);
   border: 0;
   cursor: pointer;
   padding: 5px 10px;
@@ -69,4 +82,6 @@ export const StyledH1 = styled.h1`
   font-size: 50px;
   font-weight: bold;
   padding: 10px;
+  display: flex;
+  align-items: center;
 `;
