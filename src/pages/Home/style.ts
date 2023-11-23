@@ -52,9 +52,12 @@ export const Ancor = styled.a`
 `
 
 export const ToggleButton = styled.button`
-  z-index: 3;
-  background-color: transparent;
-  color: var(--primary-light);
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  background-color: #333;
+  color: #fff;
   border: 0;
   cursor: pointer;
   padding: 5px 10px;
