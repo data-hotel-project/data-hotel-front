@@ -1,0 +1,7 @@
+export const EmployeeDashboard = () => {
+    return (
+        <>
+
+        </>
+    );
+};
