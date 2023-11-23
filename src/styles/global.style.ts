@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
         --primary-light: #E8E8E8;
         --primary-light-hover: #DDDDDD;
         --primary-light-active: #B9B9B9;
-        --primary-normal: #1C1C1C;
+        --primary-normal: #1D1D1C;
         --primary-normal-hover: #191919;
         --primary-normal-active: #161616;
         --primary-dark: #151515;
@@ -28,11 +28,12 @@ const GlobalStyle = createGlobalStyle`
         --sucess-1: #18794E;
         --sucess-2: #CCEBD7;
 
+        --title-font: 'Brolia';
         --font: 'Roboto';
     }
 
     html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
     del, dfn, em, img, ins, kbd, q, s, samp,
     small, strike, strong, sub, sup, tt, var,
@@ -53,6 +54,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: var(--font);
         list-style: none;
         color: var(--primary-light);
+    }
+
+    h1, h2 {
+        font-family: var(--title-font);
     }
 
     article, aside, details, figcaption, figure, 
