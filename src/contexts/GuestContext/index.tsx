@@ -27,7 +27,7 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
         console.log(response.data)
         setGuest(response.data.user);
         localStorage.setItem("@DataHotel:TOKEN", response.data.access);
-        localStorage.setItem("@DataHotel:ID", response.data.user.id);
+        localStorage.setItem("@DataHotel:userID", response.data.user.id);
         toast.success("Login efetuado com sucesso");
         navigate("/");
       } catch (error) {
