@@ -5,10 +5,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { EmployeeProvider } from "./contexts/EmployeeContext";
 import { GuestProvider } from "./contexts/GuestContext";
 import { HotelProvider } from "./contexts/HotelContext";
+import GlobalStyle from "./styles/global.style";
 
 function App() {
   return (
     <>
+    <GlobalStyle/>
       <AuthProvider>
         <HotelProvider>
           <EmployeeProvider>

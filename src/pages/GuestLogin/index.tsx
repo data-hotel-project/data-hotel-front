@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 // import { useEmployee } from "../../contexts/EmployeeContext";
 import { useGuest } from "../../contexts/GuestContext";
 import { guestSchemaLogin } from "../../validators/guestValidators";
+import { StyledBody } from "./style";
+import Background from "../../components/Background";
 
 const Login = () => {
   // const { employeeLogin } = useEmployee()
@@ -25,31 +27,38 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <h1>Login</h1>
-        <Input
-          label="E-mail | Username"
-          type="text"
-          errorMessage={errors.username?.message}
-          register={register}
-          id="username"
-          getValues={getValues}
-        />
-        <Input
-          label="Password"
-          type="password"
-          errorMessage={errors.password?.message}
-          register={register}
-          id="password"
-          getValues={getValues}
-          showPass={true}
-        />
-        <a href="/">Forgot the password?</a>
-        <a href="/register">Don't you have an account?</a>
-        <Button size={"medium"}>Login</Button>
-      </div>
-    </form>
+    <Background>
+      <StyledBody>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="box">
+            <h1>Login</h1>
+            <Input
+              label="E-mail | Username"
+              type="text"
+              errorMessage={errors.username?.message}
+              register={register}
+              id="username"
+              getValues={getValues}
+            />
+            <Input
+              label="Password"
+              type="password"
+              errorMessage={errors.password?.message}
+              register={register}
+              id="password"
+              getValues={getValues}
+              showPass={true}
+            />
+            <div className="links">
+              <a href="/">Início</a>
+              <a href="/register">Ainda não tem conta?</a>
+            </div>
+
+            <Button size={"medium"}>Login</Button>
+          </div>
+        </form>
+      </StyledBody>
+    </Background>
   );
 };
 
