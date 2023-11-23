@@ -3,7 +3,7 @@ import { StyledH2 } from "./style";
 import { StyledHeader } from "../../components/Header/style";
 import Background from "../../components/Background";
 
-export const Home:React.FC = () => {
+export const Home = () => {
   return (
     <>
       <StyledHeader />

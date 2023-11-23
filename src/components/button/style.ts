@@ -9,9 +9,9 @@ export const StyledButton = styled.button <iButtonStyledProps>`
   font-size: ${(props) => (props.size === "big" ? "16px" : "14px")};
   padding: ${(props) =>
     props.size === "big" ? "12px" : "8px 20px"};
-  border-radius: 50%;
   border: 1.5px solid ${(props) => props.borderColor || "transparent"};
   transition: background-color 0.2s;
+  border: 1px solid var(--secondary-normal);
   text-decoration: none;
 
   &:not(:disabled):hover {
