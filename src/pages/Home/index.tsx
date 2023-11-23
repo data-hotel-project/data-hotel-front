@@ -1,8 +1,9 @@
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { StyledBody, StyledH1 } from "./style";
+import { StyledH1 } from "./style";
 import { StyledHeader } from "../../components/Header/style";
+import Background from "../../components/Background";
 
 export const Home:React.FC = () => {
   const {
@@ -20,10 +21,10 @@ export const Home:React.FC = () => {
   return (
     <>
       <StyledHeader />
-      <StyledBody>
+      <Background>
         <Header />
         <StyledH1>GRAND DATA HOTEL</StyledH1>
-      </StyledBody>
+      </Background>
       {/* <h2>Home</h2> */}
       {/* <form
         onSubmit={handleSubmit(onSubmit)}
