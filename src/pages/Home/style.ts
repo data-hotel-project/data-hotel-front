@@ -70,17 +70,17 @@ export const StyledBody = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
-
-  /* @media (min-width: 800px) {
-    position: static;
-    width: 1920px;
-  } */
 `;
 
-export const StyledH1 = styled.h1`
-  font-size: 50px;
+export const StyledH2 = styled.h1`
+  font-size: 30px;
   font-weight: bold;
   padding: 10px;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  @media (min-width: 600px) {
+    font-size: 50px;
+  }
 `;
