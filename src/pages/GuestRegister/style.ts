@@ -4,7 +4,6 @@ export const StyledBody = styled.div`
   padding: 2rem 1rem;
 
   .box {
-
     border: 1px solid rgba(223, 99, 71, 0.3);
     border-radius: 1rem;
     background-color: rgba(223, 99, 71, 0.3);
@@ -12,7 +11,6 @@ export const StyledBody = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    
 
     h1 {
       font-size: 1.5rem;
