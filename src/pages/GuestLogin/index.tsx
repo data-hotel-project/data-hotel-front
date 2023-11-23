@@ -9,7 +9,7 @@ import { guestSchemaLogin } from "../../validators/guestValidators";
 
 const Login = () => {
   // const { employeeLogin } = useEmployee()
-  const { guestLogin } = useGuest();
+  const { loginGuest } = useGuest();
 
   const {
     register,
@@ -21,8 +21,7 @@ const Login = () => {
   });
 
   const onSubmit = async (data: iLoginRequest) => {
-    console.log("oi", data);
-    await guestLogin(data);
+    await loginGuest(data);
   };
 
   return (

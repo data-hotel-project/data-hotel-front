@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { IGuestContext } from "./@types";
 import { api } from "../../server/Api";
 import { toast } from "react-toastify";
@@ -9,32 +8,29 @@ import {
   TGuestLoginData,
   TGuestUpdateFormData,
 } from "../../validators/guestValidators";
+import { AuthContext } from "../AuthContext";
 
 export const GuestContext = createContext<IGuestContext>({} as IGuestContext);
 
 export const GuestProvider = ({ children }: IChildrenProps) => {
-  const navigate = useNavigate();
-
   const [guest, setGuest] = useState<iGuest | null>(null);
   const [guests, setGuests] = useState<iGuest[] | null>(null);
 
-  const token = localStorage.getItem("@DataHotel:TOKEN");
-  const userId = localStorage.getItem("@DataHotel:ID");
+  const { token, userId, navigate } = useContext(AuthContext);
 
   const loginGuest = async (formData: TGuestLoginData) => {
     console.log("olá");
     try {
       const response = await api.post("/guest/login/", formData);
-      // console.log(response.data)
-
+      console.log(response.data);
       setGuest(response.data.user);
-      localStorage.setItem("@DataHotel:TOKEN", response.data.accessToken);
-      localStorage.setItem("@DataHotel:ID", response.data.user.guest.id);
+      localStorage.setItem("@DataHotel:TOKEN", response.data.access);
+      localStorage.setItem("@DataHotel:ID", response.data.user.id);
       toast.success("Login efetuado com sucesso");
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error("Tente novamente");
+      toast.error("username ou senha inválido");
     }
   };
 
