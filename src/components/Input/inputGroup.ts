@@ -23,7 +23,7 @@ const InputGroup = styled.div<iInputGroup>`
     background: none;
     color: ${(props) =>
       props.className === "sucess"
-        ? "#4BAD31"
+        ? "#FFF"
         : props.className === "done"
         ? "#1DA1F2"
         : "#14171A"};
