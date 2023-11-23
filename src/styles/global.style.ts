@@ -3,32 +3,30 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 
     :root{
-        --brand-1: #4529E6;
-        --brand-2: #5126EA;
-        --brand-3: #B0A6F0;
-        --brand-4: #EDEAFD;
+        --primary-light: #E8E8E8;
+        --primary-light-hover: #DDDDDD;
+        --primary-light-active: #B9B9B9;
+        --primary-normal: #1C1C1C;
+        --primary-normal-hover: #191919;
+        --primary-normal-active: #161616;
+        --primary-dark: #151515;
+        --primary-dark-hover: #111111;
+        --primary-dark-active: #0D0D0D;
 
-        --grey-0: #0B0D0D;
-        --grey-1: #212529;
-        --grey-2: #495057;
-        --grey-3: #868E96;
-        --grey-4: #ADB5BD;
-        --grey-5: #DEE2E6;
-        --grey-6: #F8F9FA;
+        --secondary-light: #FCF2EA;
+        --secondary-light-hover: #FAECDF;
+        --secondary-light-active: #F4D7BD;
+        --secondary-normal: #DD7D2B;
+        --secondary-normal-hover: #C77127;
+        --secondary-normal-active: #B16422;
+        --secondary-dark: #A65E20;
+        --secondary-dark-hover: #854B1A;
+        --secondary-dark-active: #633813;
 
         --alert-1: #CD2B31;
         --alert-2: #FDD8D8;
         --sucess-1: #18794E;
         --sucess-2: #CCEBD7;
-
-        --random-1: #E34D8C;
-        --random-3: #7D2A4D;
-        --random-4: #7000FF;
-        --random-6: #36007D;
-        --random-8: #2A7D5F;
-        --random-9: #153D2E;
-        --random-11: #5700E3;
-        --random-12: #30007D;
 
         --font: 'Roboto';
     }
@@ -54,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
         vertical-align: baseline;
         font-family: var(--font);
         list-style: none;
-        color: #FFFFFF
+        color: var(--primary-light);
     }
 
     article, aside, details, figcaption, figure, 
@@ -69,6 +67,14 @@ const GlobalStyle = createGlobalStyle`
 
     ol, ul {
 	    list-style: none;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
     }
 
     blockquote, q {
