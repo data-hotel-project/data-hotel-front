@@ -21,13 +21,12 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
   const token = localStorage.getItem("@DataHotel:TOKEN");
   const userId = localStorage.getItem("@DataHotel:ID");
 
-  
-
   const loginGuest = async (formData: TGuestLoginData) => {
     console.log("olá");
     try {
       const response = await api.post("/guest/login/", formData);
       // console.log(response.data)
+
       setGuest(response.data.user);
       localStorage.setItem("@DataHotel:TOKEN", response.data.accessToken);
       localStorage.setItem("@DataHotel:ID", response.data.user.guest.id);
