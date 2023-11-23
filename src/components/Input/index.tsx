@@ -15,6 +15,7 @@ const Input = ({
   type,
   showPass,
   defaultValue,
+  ...rest
 }: iInputProps) => {
   // Destructuring the register
   const { onChange, onBlur, name, ref } = register(id);
@@ -64,7 +65,7 @@ const Input = ({
   };
 
   return (
-    <InputGroup className={className} inputValue={value}>
+    <InputGroup className={className} inputValue={value} {...rest}>
       <input
         autoComplete="off"
         id={id}
@@ -77,6 +78,7 @@ const Input = ({
         onBlur={onBlur}
         name={name}
         ref={ref}
+        {...rest}
       />
       <label>{label}</label>
       {showPass ? showPassword(showPass) : null}

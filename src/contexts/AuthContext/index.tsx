@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("@DataHotel:TOKEN");
-  const userId = localStorage.getItem("@DataHotel:ID");
+  const userId = localStorage.getItem("@DataHotel:userID");
   const hotelId = localStorage.getItem("@DataHotel:hotelID");
 
   return (

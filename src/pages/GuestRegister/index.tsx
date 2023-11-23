@@ -21,6 +21,8 @@ const GuestRegister = () => {
   });
 
   const onSubmit = async (data: TGuestFormData) => {
+    console.log(data)
+
     await createGuest(data);
   };
 
@@ -64,7 +66,7 @@ const GuestRegister = () => {
         />
         <Input
           label="Data de Nascimento"
-          type="text"
+          type="date"
           errorMessage={errors.birthdate?.message}
           register={register}
           id="birthdate"
