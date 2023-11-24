@@ -49,11 +49,11 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         border: 0;
         font-size: 100%;
-        font: inherit;
+        font-family: var(--font);
         vertical-align: baseline;
         font-family: var(--font);
         list-style: none;
-        color: var(--primary-light);
+        color: #FFF;
     }
 
     h1, h2 {

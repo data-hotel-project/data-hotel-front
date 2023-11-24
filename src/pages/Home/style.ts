@@ -31,6 +31,7 @@ export const MenuContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  border-right: 1px solid var(--secondary-normal);
   animation: ${({ open }) => (open ? openAnimate : closeAnimate)} 0.3s both;
 
   a {
@@ -74,8 +75,12 @@ export const StyledBody = styled.div`
 `;
 
 export const StyledH2 = styled.h1`
+  position: absolute;
+  z-index: 1;
+  margin: 300px;
   font-size: 30px;
   font-weight: bold;
+  font-family: 'Brolia';
   padding: 10px;
   display: flex;
   align-items: center;
@@ -83,5 +88,5 @@ export const StyledH2 = styled.h1`
 
   @media (min-width: 600px) {
     font-size: 50px;
-  }
+  };
 `;

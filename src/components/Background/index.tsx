@@ -1,9 +1,10 @@
 import { IChildrenProps } from "../../interface";
-import { StyledBackground } from "./style";
+import { StyledBackground, StyledShadow } from "./style";
 
 const Background = ( {children}:IChildrenProps ) => {
     return (
         <StyledBackground>
+            <StyledShadow />
             {children}
         </StyledBackground>
     );

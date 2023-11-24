@@ -12,5 +12,5 @@ export const StyledHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 0 20px 0 20px;
-    background-color: transparent;
+    background-color: var(--primary-normal);
 `;
