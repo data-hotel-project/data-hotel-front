@@ -44,7 +44,7 @@ const InputGroup = styled.div<iInputGroup>`
         ? "#4BAD31"
         : props.className === "done"
         ? "#1DA1F2"
-        : "#14171A"};
+        : "#dcdcdc"};
     transform: ${(props) =>
       props.inputValue === ""
         ? "translateY(1rem)"
@@ -59,7 +59,7 @@ const InputGroup = styled.div<iInputGroup>`
   }
   input:focus ~ label {
     transform: translateY(-50%) scale(0.8);
-    background-color: #fff;
+    background-color: rgba(223, 99, 71,0.3);
     padding: 0 0.2em;
   }
 

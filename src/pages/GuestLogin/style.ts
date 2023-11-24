@@ -4,6 +4,11 @@ export const StyledBody = styled.div`
   display: flex;
   align-items: center;
 
+  .name{
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
   .box{
 
     border: 1px solid rgba(223, 99, 71,0.3);

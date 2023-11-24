@@ -20,7 +20,7 @@ export const StyledShadow = styled.div`
   height: 100vh;
   width: 100%;
   background-color: black;
-  opacity: 50%;
+  opacity: 70%;
   display: flex;
   justify-content: center;
   overflow-y: auto;

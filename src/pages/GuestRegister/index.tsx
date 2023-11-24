@@ -32,132 +32,153 @@ const GuestRegister = () => {
     <Background>
       <StyledBody>
         <form onSubmit={handleSubmit(onSubmit)}>
+        <h1 className="name">DATA HOTEL</h1>
           <div className="box">
-            <h1>Cadastro</h1>
-            <Input
-              label="Username"
-              type="text"
-              errorMessage={errors.username?.message}
-              register={register}
-              id="username"
-              getValues={getValues}
-            />
-            <Input
-              label="E-mail"
-              type="email"
-              errorMessage={errors.email?.message}
-              register={register}
-              id="email"
-              getValues={getValues}
-            />
-            <Input
-              label="Password"
-              type="password"
-              errorMessage={errors.password?.message}
-              register={register}
-              id="password"
-              getValues={getValues}
-              showPass={true}
-            />
-            <Input
-              label="Confirme Password"
-              type="password"
-              errorMessage={errors.password_confirmation?.message}
-              register={register}
-              id="password_confirmation"
-              getValues={getValues}
-              showPass={true}
-            />
-            <Input
-              label="Data de Nascimento"
-              type="date"
-              errorMessage={errors.birthdate?.message}
-              register={register}
-              id="birthdate"
-              getValues={getValues}
-            />
-            <Input
-              label="Nacionalidade"
-              type="text"
-              errorMessage={errors.nationality?.message}
-              register={register}
-              id="nationality"
-              getValues={getValues}
-            />
-            <Input
-              label="Contato"
-              type="text"
-              errorMessage={errors.contact?.message}
-              register={register}
-              id="contact"
-              getValues={getValues}
-            />
-            <Input
-              label="Contato de Emergência"
-              type="text"
-              errorMessage={errors.emergency_num?.message}
-              register={register}
-              id="emergency_num"
-              getValues={getValues}
-            />
-            <Input
-              label="Contato Adicional"
-              type="text"
-              errorMessage={errors.contact_aditional?.message}
-              register={register}
-              id="contact_aditional"
-              getValues={getValues}
-            />
-            <div className="address">
-              <h2>Endereço</h2>
-              <Input
-                label="Rua"
-                type="text"
-                errorMessage={errors.address?.message}
-                register={register}
-                id="address.street"
-                getValues={getValues}
-              />
-              <Input
-                label="Número"
-                type="text"
-                errorMessage={errors.address?.message}
-                register={register}
-                id="address.number"
-                getValues={getValues}
-              />
-              <Input
-                label="Cidade"
-                type="text"
-                errorMessage={errors.address?.message}
-                register={register}
-                id="address.city"
-                getValues={getValues}
-              />
-              <div className="address2">
-                <Input
-                  label="Estado"
-                  type="text"
-                  errorMessage={errors.address?.message}
-                  register={register}
-                  id="address.state"
-                  getValues={getValues}
-                />
-                <Input
-                  label="Complemento"
-                  type="text"
-                  errorMessage={errors.address?.message}
-                  register={register}
-                  id="address.complement"
-                  getValues={getValues}
-                />
+            <div className="body">
+              <div className="box-info">
+                <h1>Register</h1>
+                <div className="info">
+                  <div className="info-part1">
+                    <Input
+                      label="Username"
+                      type="text"
+                      errorMessage={errors.username?.message}
+                      register={register}
+                      id="username"
+                      getValues={getValues}
+                    />
+                    <Input
+                      label="E-mail"
+                      type="email"
+                      errorMessage={errors.email?.message}
+                      register={register}
+                      id="email"
+                      getValues={getValues}
+                    />
+                    <Input
+                      label="Password"
+                      type="password"
+                      errorMessage={errors.password?.message}
+                      register={register}
+                      id="password"
+                      getValues={getValues}
+                      showPass={true}
+                    />
+                    <Input
+                      label="Confirm Password"
+                      type="password"
+                      errorMessage={errors.password_confirmation?.message}
+                      register={register}
+                      id="password_confirmation"
+                      getValues={getValues}
+                      showPass={true}
+                    />
+                    <Input
+                      label="Birthdate date"
+                      type="date"
+                      errorMessage={errors.birthdate?.message}
+                      register={register}
+                      id="birthdate"
+                      getValues={getValues}
+                    />
+                  </div>
+                  <div className="info-part2">
+                    <Input
+                      label="Nationality"
+                      type="text"
+                      errorMessage={errors.nationality?.message}
+                      register={register}
+                      id="nationality"
+                      getValues={getValues}
+                    />
+                    <Input
+                      label="Contact"
+                      type="text"
+                      errorMessage={errors.contact?.message}
+                      register={register}
+                      id="contact"
+                      getValues={getValues}
+                    />
+                    <Input
+                      label="Emergency contact"
+                      type="text"
+                      errorMessage={errors.emergency_num?.message}
+                      register={register}
+                      id="emergency_num"
+                      getValues={getValues}
+                    />
+                    <Input
+                      label="Aditional contact"
+                      type="text"
+                      errorMessage={errors.contact_aditional?.message}
+                      register={register}
+                      id="contact_aditional"
+                      getValues={getValues}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="box-address">
+                <div className="address">
+                  <h2>Endereço</h2>
+                  <Input
+                    label="Rua"
+                    type="text"
+                    errorMessage={errors.address?.message}
+                    register={register}
+                    id="address.street"
+                    getValues={getValues}
+                  />
+                  <div className="address2">
+                    <Input
+                      label="Número"
+                      type="text"
+                      errorMessage={errors.address?.message}
+                      register={register}
+                      id="address.number"
+                      getValues={getValues}
+                    />
+                    <Input
+                      label="Cidade"
+                      type="text"
+                      errorMessage={errors.address?.message}
+                      register={register}
+                      id="address.city"
+                      getValues={getValues}
+                    />
+                  </div>
+
+                  <div className="address2">
+                    <Input
+                      label="Estado"
+                      type="text"
+                      errorMessage={errors.address?.message}
+                      register={register}
+                      id="address.state"
+                      getValues={getValues}
+                    />
+                    <Input
+                      label="Complemento"
+                      type="text"
+                      errorMessage={errors.address?.message}
+                      register={register}
+                      id="address.complement"
+                      getValues={getValues}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="links">
-              <a href="/login">Já possui cadastro?</a>
-              <a href="/">Voltar</a>
+
+            <div className="foot">
+              <div className="links">
+                <a href="/login">Already have account?</a>
+                <a href="/">Back</a>
+              </div>
+              <Button size={"medium"} backgroundColor={"black"}>
+                Register
+              </Button>
             </div>
-            <Button size={"medium"}>Cadastrar</Button>
           </div>
         </form>
       </StyledBody>
