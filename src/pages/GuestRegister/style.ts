@@ -6,7 +6,7 @@ export const StyledBody = styled.div`
   .box {
     border: 1px solid rgba(223, 99, 71, 0.3);
     border-radius: 1rem;
-    background-color: rgba(223, 99, 71, 0.3);
+    background-color: rgba(225, 102, 82, 0.3);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -31,11 +31,9 @@ export const StyledBody = styled.div`
       flex-direction: column;
       gap: 0.5rem;
 
-      div {
-        /* display: flex;
-        justify-content: space-between; */
+      .address2 {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         gap: 0.5rem;
       }
     }
