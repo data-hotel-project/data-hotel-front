@@ -30,6 +30,7 @@ const Login = () => {
     <Background>
       <StyledBody>
         <form onSubmit={handleSubmit(onSubmit)}>
+        <h1 className="name">DATA HOTEL</h1>
           <div className="box">
             <h1>Login</h1>
             <Input
@@ -50,11 +51,11 @@ const Login = () => {
               showPass={true}
             />
             <div className="links">
-              <a href="/">Início</a>
-              <a href="/register">Ainda não tem conta?</a>
+              <a href="/">Home</a>
+              <a href="/register">Still don't have account?</a>
             </div>
 
-            <Button size={"medium"}>Login</Button>
+            <Button size={"medium"} backgroundColor={"black"}>Login</Button>
           </div>
         </form>
       </StyledBody>

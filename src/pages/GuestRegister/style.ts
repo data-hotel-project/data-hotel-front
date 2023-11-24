@@ -2,6 +2,11 @@ import { styled } from "styled-components";
 
 export const StyledBody = styled.div`
   padding: 2rem 1rem;
+  
+  .name{
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 
   .box {
     border: 1px solid rgba(223, 99, 71, 0.3);
@@ -24,6 +29,24 @@ export const StyledBody = styled.div`
     }
 
     input::placeholder {
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .info-part1 {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .info-part2 {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
 
     .address {
@@ -55,9 +78,24 @@ export const StyledBody = styled.div`
     }
   }
 
-  @media (min-width: 769px) {
-  }
+  @media (min-width: 1000px) {
+    display: flex;
+    align-items: center;
+    .box {
+      .body{
+        display: flex;
+        flex-direction: row;
+        gap: 1rem
+      }
+      .box-info {
+        .info {
+          flex-direction: row;
+        }
+      }
+      .links {
+        justify-content: space-around;
+      }
 
-  @media (min-width: 1025px) {
+    }
   }
 `;
