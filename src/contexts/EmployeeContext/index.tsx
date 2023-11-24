@@ -44,7 +44,7 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
       });
       console.log(response.data);
       toast.success("Cadastro com sucesso");
-      navigate("/login");
+      navigate("employee/login");
     } catch (error) {
       console.log(error);
       toast.error(`${error}`);

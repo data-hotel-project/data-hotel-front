@@ -71,6 +71,7 @@ export const StyledBody = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
+  overflow-y: auto;
 `;
 
 export const StyledH2 = styled.h1`

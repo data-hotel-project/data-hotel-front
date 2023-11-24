@@ -10,31 +10,29 @@ import {
 } from "../../validators/guestValidators";
 import { AuthContext } from "../AuthContext";
 
-export const GuestContext = createContext<IGuestContext>(
-  {} as IGuestContext
-);
+export const GuestContext = createContext<IGuestContext>({} as IGuestContext);
 
 export const GuestProvider = ({ children }: IChildrenProps) => {
-
   const [guest, setGuest] = useState<iGuest | null>(null);
   const [guests, setGuests] = useState<iGuest[] | null>(null);
 
-  const { token, userId, navigate } = useContext(AuthContext)
+  const { token, userId, navigate } = useContext(AuthContext);
 
   const loginGuest = async (formData: TGuestLoginData) => {
+    console.log("olá");
     try {
-        const response = await api.post("/guest/login/", formData);
-        console.log(response.data)
-        setGuest(response.data.user);
-        localStorage.setItem("@DataHotel:TOKEN", response.data.access);
-        localStorage.setItem("@DataHotel:userID", response.data.user.id);
-        toast.success("Login efetuado com sucesso");
-        navigate("/");
-      } catch (error) {
-        console.log(error);
-        toast.error("username ou senha inválido");
-      }
-    };
+      const response = await api.post("/guest/login/", formData);
+      console.log(response.data);
+      setGuest(response.data.user);
+      localStorage.setItem("@DataHotel:TOKEN", response.data.access);
+      localStorage.setItem("@DataHotel:userID", response.data.user.id);
+      toast.success("Login efetuado com sucesso");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("username ou senha inválido");
+    }
+  };
 
   const createGuest = async (formData: TGuestFormData) => {
     try {

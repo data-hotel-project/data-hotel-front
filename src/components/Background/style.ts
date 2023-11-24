@@ -11,6 +11,7 @@ export const StyledBackground = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
+  overflow-y: auto;
 `;
 
 export const StyledShadow = styled.div`
@@ -31,4 +32,5 @@ export const StyledNoisy = styled.div`
   background-position: center;
   background-size: cover;
   opacity: 5%;
-`
+`;
+
