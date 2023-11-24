@@ -21,6 +21,9 @@ export const StyledShadow = styled.div`
   width: 100%;
   background-color: black;
   opacity: 50%;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
 `;
 
 export const StyledNoisy = styled.div`
@@ -32,5 +35,6 @@ export const StyledNoisy = styled.div`
   background-position: center;
   background-size: cover;
   opacity: 5%;
+  overflow-y: auto;
 `;
 
