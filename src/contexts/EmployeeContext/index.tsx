@@ -8,7 +8,7 @@ import {
   TEmployeeLonginData,
   TEmployeeUpdateFormData,
 } from "../../validators/employeeValidators";
-import { AuthContext } from "../AuthContext";
+import { AuthContext, useAuth } from "../AuthContext";
 
 export const EmployeeContext = createContext<IEmployeeContext>(
   {} as IEmployeeContext
@@ -16,7 +16,9 @@ export const EmployeeContext = createContext<IEmployeeContext>(
 
 export const EmployeeProvider = ({ children }: IChildrenProps) => {
 
-  const [user, setUser] = useState<iEmployee | null>(null);
+  const {user, setUser} = useAuth()
+
+  const [employee, setEmployee] = useState<iEmployee | null>(null);
   const [employees, setEmployees] = useState<iEmployee[] | null>(null);
 
   const { token, userId, navigate } = useContext(AuthContext)
@@ -25,13 +27,14 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
     try {
       const response = await api.post("/employee/login/", formData);
       setUser(response.data.user);
+      console.log(user)
       localStorage.setItem("@DataHotel:TOKEN", response.data.access);
       localStorage.setItem("@DataHotel:userID", response.data.user.id);
       toast.success("Login efetuado com sucesso");
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error("username ou senha inválido");
+      toast.error("username or password invalid");
     }
   };
 
@@ -43,7 +46,7 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
         },
       });
       console.log(response.data);
-      toast.success("Cadastro com sucesso");
+      toast.success("Successful registration");
       navigate("employee/login");
     } catch (error) {
       console.log(error);
@@ -53,7 +56,7 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
 
   const listEmployees = async () => {
     try {
-      const response = await api.post("/employee/");
+      const response = await api.get("/employee/");
       setEmployees(response.data);
     } catch (error) {
       console.log(error);
@@ -63,7 +66,7 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
 
   const retrieveEmployee = async () => {
     try {
-      const response = await api.post(`/employee/${userId}`);
+      const response = await api.get(`/employee/${userId}`);
       setUser(response.data);
     } catch (error) {
       console.log(error);
@@ -73,7 +76,7 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
 
   const updateEmployee = async (formData: TEmployeeUpdateFormData) => {
     try {
-      const response = await api.post(`/employee/${userId}`, formData, {
+      const response = await api.patch(`/employee/${userId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -88,13 +91,13 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
 
   const deleteEmployee = async () => {
     try {
-      const response = await api.post(`/employee/${userId}`, {
+      const response = await api.delete(`/employee/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       console.log(response.data);
-      toast.success("Funcionário desligado");
+      toast.success("Fired employee");
       setUser(null);
     } catch (error) {
       console.log(error);
@@ -105,9 +108,8 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
   return (
     <EmployeeContext.Provider
       value={{
-        navigate,
-        user,
-        setUser,
+        employee,
+        setEmployee,
         employees,
         setEmployees,
         loginEmployee,

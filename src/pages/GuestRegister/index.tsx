@@ -120,9 +120,9 @@ const GuestRegister = () => {
               </div>
               <div className="box-address">
                 <div className="address">
-                  <h2>Endereço</h2>
+                  <h2>Address</h2>
                   <Input
-                    label="Rua"
+                    label="Street"
                     type="text"
                     errorMessage={errors.address?.message}
                     register={register}
@@ -131,7 +131,7 @@ const GuestRegister = () => {
                   />
                   <div className="address2">
                     <Input
-                      label="Número"
+                      label="Number"
                       type="text"
                       errorMessage={errors.address?.message}
                       register={register}
@@ -139,7 +139,7 @@ const GuestRegister = () => {
                       getValues={getValues}
                     />
                     <Input
-                      label="Cidade"
+                      label="City"
                       type="text"
                       errorMessage={errors.address?.message}
                       register={register}
@@ -150,7 +150,7 @@ const GuestRegister = () => {
 
                   <div className="address2">
                     <Input
-                      label="Estado"
+                      label="State"
                       type="text"
                       errorMessage={errors.address?.message}
                       register={register}
@@ -158,7 +158,7 @@ const GuestRegister = () => {
                       getValues={getValues}
                     />
                     <Input
-                      label="Complemento"
+                      label="Complement"
                       type="text"
                       errorMessage={errors.address?.message}
                       register={register}

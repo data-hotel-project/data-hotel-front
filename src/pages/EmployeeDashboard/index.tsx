@@ -8,9 +8,12 @@ import { MenuContainer, ToggleButton } from "../Home/style";
 import Button from "../../components/button";
 import { StyledNoisy } from "../../components/Background/style";
 import { StyledBox, StyledContainer } from "./style";
+import { useAuth } from "../../contexts/AuthContext";
 
 
 export const EmployeeDashboard = () => {
+    const {userLogout} = useAuth()
+
     const [menuOpen, setMenuOpen] = useState(false);
     const toggleMenu = () => {
       setMenuOpen(!menuOpen);
@@ -24,9 +27,9 @@ export const EmployeeDashboard = () => {
                 <FontAwesomeIcon icon={faBars} style={{color: "var(--primary-light)",}} />
                 </ToggleButton>
                 <MenuContainer open={menuOpen}>
-                <Link to={"/login"}>
-                    <Button size="medium">Logout</Button>
-                </Link>
+                {/* <Link to={"/login"}> */}
+                    <Button size="medium" onClick={()=>userLogout()}>Logout</Button>
+                {/* </Link> */}
                 </MenuContainer>
                 <h3>DATA HOTEL</h3>
             </StyledHeader>

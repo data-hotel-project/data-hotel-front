@@ -279,4 +279,4 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
   );
 };
 
-export const useGuest = () => useContext(HotelContext);
+export const useHotel = () => useContext(HotelContext);
