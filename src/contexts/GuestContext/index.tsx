@@ -27,8 +27,7 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
       setUser(response.data.user);
       localStorage.setItem("@DataHotel:TOKEN", response.data.access);
       localStorage.setItem("@DataHotel:userID", response.data.user.id);
-      getLoggedUser(response.data.access)
-      
+      getLoggedUser()
       
     } catch (error) {
       console.log(error);
@@ -40,7 +39,7 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
     try {
       const response = await api.post("/guest/", formData);
       console.log(response.data);
-      toast.success("Cadastro com sucesso");
+      toast.success("Successful registration");
       navigate("/login");
     } catch (error) {
       console.log(error);

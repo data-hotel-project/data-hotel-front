@@ -8,6 +8,6 @@ export interface iAuthProviderData {
   token: string | null;
   userId: string | null;
   hotelId: string | null;
-  getLoggedUser: (access:string) => Promise<void>;
+  getLoggedUser: () => Promise<void>;
   userLogout: () => void;
 }

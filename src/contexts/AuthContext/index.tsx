@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IChildrenProps, iEmployee, iGuest } from "../../interface";
 import { iAuthProviderData } from "./@types";
@@ -18,11 +18,11 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
   const userId = localStorage.getItem("@DataHotel:userID");
   const hotelId = localStorage.getItem("@DataHotel:hotelID");
 
-  const getLoggedUser = async (access:string) => {
+  const getLoggedUser = async () => {
     try {
       const response = await api.get("/logged/", {
         headers: {
-          Authorization: `Bearer ${access}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       setUser(response.data);
@@ -52,6 +52,10 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
     localStorage.removeItem("@DataHotel:hotelID");
     navigate("/");
   };
+
+  useEffect(() => {
+    getLoggedUser();
+  }, [token]);
 
   return (
     <AuthContext.Provider

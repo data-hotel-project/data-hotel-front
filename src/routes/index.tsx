@@ -5,6 +5,7 @@ import { GuestDashboard } from "../pages/GuestDashboard";
 import { EmployeeDashboard } from "../pages/EmployeeDashboard";
 import { AdminDashboard } from "../pages/AdminDashboard";
 import GuestRegister from "../pages/GuestRegister";
+import { ProtectedRoutes } from "./ProtectedRoute";
 
 const RoutesMain = () => {
   return (
@@ -12,9 +13,12 @@ const RoutesMain = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<GuestRegister />} />
-      <Route path="/guestDashboard" element={<GuestDashboard />} />
-      <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
-      <Route path="/adminDashboard" element={<AdminDashboard />} />
+
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/guestDashboard" element={<GuestDashboard />} />
+        <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
+        <Route path="/adminDashboard" element={<AdminDashboard />} />
+      </Route>
     </Routes>
   );
 };

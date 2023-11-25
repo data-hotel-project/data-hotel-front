@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { IHotelContext } from "./@types";
 import { api } from "../../server/Api";
 import { toast } from "react-toastify";
@@ -42,7 +42,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
         },
       });
       console.log(response.data);
-      toast.success("Cadastro com sucesso");
+      toast.success("Successful registration");
       navigate("/login");
     } catch (error) {
       console.log(error);
@@ -93,13 +93,17 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
         },
       });
       console.log(response.data);
-      toast.success("Usuário deletado");
+      toast.success("User deleted");
       setHotel(null);
     } catch (error) {
       console.log(error);
       toast.error(`${error}`);
     }
   };
+
+  useEffect(() => {
+    listHotels();
+  }, []);
 
   // ---------------------ROOM-------------------------
 
@@ -111,7 +115,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
         },
       });
       console.log(response.data);
-      toast.success("Quarto com sucesso");
+      toast.success("Room successful registration");
     } catch (error) {
       console.log(error);
       toast.error(`${error}`);
@@ -161,7 +165,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
         },
       });
       console.log(response.data);
-      toast.success("Quarto deletado");
+      toast.success("Romm deleted");
       setRoom(null);
     } catch (error) {
       console.log(error);
@@ -179,7 +183,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
         },
       });
       console.log(response.data);
-      toast.success("Cadastro com sucesso");
+      toast.success("Revervation successful registration");
     } catch (error) {
       console.log(error);
       toast.error(`${error}`);
@@ -233,7 +237,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
         },
       });
       console.log(response.data);
-      toast.success("Reserva deletada");
+      toast.success("Reservation deleted");
       setReservation(null);
     } catch (error) {
       console.log(error);
