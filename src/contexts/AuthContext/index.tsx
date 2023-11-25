@@ -19,29 +19,32 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
   const hotelId = localStorage.getItem("@DataHotel:hotelID");
 
   const getLoggedUser = async () => {
-    try {
-      const response = await api.get("/logged/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setUser(response.data);
+    if (token) {
+      try {
+        const response = await api.get("/logged/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(response.data)
+        setUser(response.data.user);
 
-      if (token && response.data.is_superuser == true) {
-        navigate("/adminDashboard");
-        toast.success("Login successfully");
-      } else if (token && response.data.is_staff == true) {
-        localStorage.setItem("@DataHotel:hotelID", response.data.hotel);
-        navigate("/employeeDashboard");
-        toast.success("Login successfully");
-      } else if (token && response.data.is_staff == false) {
-        navigate("/guestDashboard");
-        toast.success("Login successfully");
-      } else {
-        navigate("/");
+        if (token && response.data.user.is_superuser == true) {
+          navigate("/adminDashboard");
+          toast.success("Login successfully");
+        } else if (token && response.data.user.is_staff == true) {
+          localStorage.setItem("@DataHotel:hotelID", response.data.hotel);
+          navigate("/employeeDashboard");
+          toast.success("Login successfully");
+        } else if (token && response.data.user.is_staff == false) {
+          navigate("/guestDashboard");
+          toast.success("Login successfully");
+        } else {
+          navigate("/");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
