@@ -52,8 +52,12 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const listHotels = async () => {
     try {
-      const response = await api.post("/hotel/");
+      const response = await api.get("/hotel/");
+      console.log(response.data.lentgh)
       setHotels(response.data);
+      if (response.data.lentgh == 1) {
+        localStorage.setItem("@DataHotel:hotelID", response.data[0].id)
+      }
     } catch (error) {
       console.log(error);
       toast.error(`${error}`);
@@ -62,7 +66,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const retrieveHotel = async () => {
     try {
-      const response = await api.post(`/hotel/${hotelId}`);
+      const response = await api.get(`/hotel/${hotelId}`);
       setHotel(response.data);
     } catch (error) {
       console.log(error);
@@ -72,13 +76,13 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const updateHotel = async (formData: THotelUpdateFormData) => {
     try {
-      const response = await api.post(`/hotel/${userId}`, formData, {
+      const response = await api.patch(`/hotel/${userId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setHotel(response.data);
-      navigate(`/${userId}/dashboard`);
+      navigate(`/adminDashboard`);
     } catch (error) {
       console.log(error);
       toast.error(`${error}`);
@@ -87,7 +91,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const deleteHotel = async () => {
     try {
-      const response = await api.post(`/hotel/${userId}`, {
+      const response = await api.delete(`/hotel/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -103,7 +107,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   useEffect(() => {
     listHotels();
-  }, []);
+  }, [token]);
 
   // ---------------------ROOM-------------------------
 
@@ -124,7 +128,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const listRooms = async () => {
     try {
-      const response = await api.post("/room/");
+      const response = await api.get("/room/");
       setRooms(response.data);
     } catch (error) {
       console.log(error);
@@ -134,7 +138,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const retrieveRoom = async () => {
     try {
-      const response = await api.post(`/room/${room?.id}`);
+      const response = await api.get(`/room/${room?.id}`);
       setRoom(response.data);
     } catch (error) {
       console.log(error);
@@ -144,13 +148,13 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const updateRoom = async (formData: TRoomUpdateData) => {
     try {
-      const response = await api.post(`/room/${room?.id}`, formData, {
+      const response = await api.patch(`/room/${room?.id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setRoom(response.data);
-      navigate(`/${userId}/dashboard`);
+      navigate(`/employeeDashboard`);
     } catch (error) {
       console.log(error);
       toast.error(`${error}`);
@@ -159,7 +163,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const deleteRoom = async () => {
     try {
-      const response = await api.post(`/room/${room?.id}`, {
+      const response = await api.delete(`/room/${room?.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -192,7 +196,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const listReservations = async () => {
     try {
-      const response = await api.post("/reservation/");
+      const response = await api.get("/reservation/");
       setReservations(response.data);
     } catch (error) {
       console.log(error);
@@ -202,7 +206,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const retrieveReservation = async () => {
     try {
-      const response = await api.post(`/reservation/${reservation?.id}`);
+      const response = await api.get(`/reservation/${reservation?.id}`);
       setReservation(response.data);
     } catch (error) {
       console.log(error);
@@ -212,7 +216,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const updateReservation = async (formData: TReservationUpdateData) => {
     try {
-      const response = await api.post(
+      const response = await api.patch(
         `/reservation/${reservation?.id}`,
         formData,
         {
@@ -231,7 +235,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   const deleteReservation = async () => {
     try {
-      const response = await api.post(`/reservation/${reservation?.id}`, {
+      const response = await api.delete(`/reservation/${reservation?.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
