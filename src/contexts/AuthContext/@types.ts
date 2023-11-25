@@ -10,4 +10,9 @@ export interface iAuthProviderData {
   hotelId: string | null;
   getLoggedUser: () => Promise<void>;
   userLogout: () => void;
-}
+  showModal: string
+  setShowModal: React.Dispatch<React.SetStateAction<string>>
+  closeModal: () => void
+  };
+
+

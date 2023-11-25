@@ -18,6 +18,12 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
   const userId = localStorage.getItem("@DataHotel:userID");
   const hotelId = localStorage.getItem("@DataHotel:hotelID");
 
+  const [showModal, setShowModal] = useState<string>("");
+
+  const closeModal = () => {
+    setShowModal("");
+  };
+
   const getLoggedUser = async () => {
     if (token) {
       try {
@@ -71,6 +77,9 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
         hotelId,
         getLoggedUser,
         userLogout,
+        showModal,
+        setShowModal,
+        closeModal,
       }}
     >
       {children}
