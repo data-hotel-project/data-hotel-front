@@ -2,8 +2,8 @@ import { styled } from "styled-components";
 
 export const StyledBody = styled.div`
   padding: 2rem 1rem;
-  
-  .name{
+
+  .name {
     text-align: center;
     margin-bottom: 2rem;
   }
@@ -54,6 +54,10 @@ export const StyledBody = styled.div`
       flex-direction: column;
       gap: 0.5rem;
 
+      h2 {
+        margin-top: 1rem;
+      }
+
       .address2 {
         display: flex;
         justify-content: space-between;
@@ -82,20 +86,25 @@ export const StyledBody = styled.div`
     display: flex;
     align-items: center;
     .box {
-      .body{
+      .body {
         display: flex;
         flex-direction: row;
-        gap: 1rem
+        gap: 1rem;
       }
+
       .box-info {
         .info {
           flex-direction: row;
         }
       }
+      .address {
+        h2 {
+          margin-top: 0rem;
+        }
+      }
       .links {
         justify-content: space-around;
       }
-
     }
   }
 `;

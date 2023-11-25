@@ -1,4 +1,3 @@
-import { NavigateFunction } from "react-router-dom";
 import {
   TEmployeeFormData,
   TEmployeeLonginData,
@@ -7,9 +6,8 @@ import {
 import { iEmployee } from "../../interface";
 
 export interface IEmployeeContext {
-  navigate: NavigateFunction;
-  user: iEmployee | null;
-  setUser: React.Dispatch<React.SetStateAction<iEmployee | null>>;
+  employee: iEmployee | null;
+  setEmployee: React.Dispatch<React.SetStateAction<iEmployee | null>>;
   employees: iEmployee[] | null;
   setEmployees: React.Dispatch<React.SetStateAction<iEmployee[] | null>>;
   loginEmployee: (formData: TEmployeeLonginData) => Promise<void>;

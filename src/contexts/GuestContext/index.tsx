@@ -8,29 +8,30 @@ import {
   TGuestLoginData,
   TGuestUpdateFormData,
 } from "../../validators/guestValidators";
-import { AuthContext } from "../AuthContext";
+import { AuthContext, useAuth } from "../AuthContext";
 
 export const GuestContext = createContext<IGuestContext>({} as IGuestContext);
 
 export const GuestProvider = ({ children }: IChildrenProps) => {
+  const { setUser, getLoggedUser } = useAuth();
+
   const [guest, setGuest] = useState<iGuest | null>(null);
   const [guests, setGuests] = useState<iGuest[] | null>(null);
 
   const { token, userId, navigate } = useContext(AuthContext);
 
   const loginGuest = async (formData: TGuestLoginData) => {
-    console.log("olá");
     try {
       const response = await api.post("/guest/login/", formData);
       console.log(response.data);
-      setGuest(response.data.user);
+      setUser(response.data.user);
       localStorage.setItem("@DataHotel:TOKEN", response.data.access);
       localStorage.setItem("@DataHotel:userID", response.data.user.id);
-      toast.success("Login efetuado com sucesso");
-      navigate("/");
+      getLoggedUser()
+      
     } catch (error) {
       console.log(error);
-      toast.error("username ou senha inválido");
+      toast.error("username or password invalid");
     }
   };
 
@@ -38,7 +39,7 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
     try {
       const response = await api.post("/guest/", formData);
       console.log(response.data);
-      toast.success("Cadastro com sucesso");
+      toast.success("Successful registration");
       navigate("/login");
     } catch (error) {
       console.log(error);
@@ -48,7 +49,7 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
 
   const listGuests = async () => {
     try {
-      const response = await api.post("/guest/");
+      const response = await api.get("/guest/");
       setGuests(response.data);
     } catch (error) {
       console.log(error);
@@ -58,7 +59,7 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
 
   const retrieveGuest = async () => {
     try {
-      const response = await api.post(`/guest/${userId}`);
+      const response = await api.get(`/guest/${userId}`);
       setGuest(response.data);
     } catch (error) {
       console.log(error);
@@ -68,7 +69,7 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
 
   const updateGuest = async (formData: TGuestUpdateFormData) => {
     try {
-      const response = await api.post(`/guest/${userId}`, formData, {
+      const response = await api.patch(`/guest/${userId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -83,13 +84,13 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
 
   const deleteGuest = async () => {
     try {
-      const response = await api.post(`/guest/${userId}`, {
+      const response = await api.delete(`/guest/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       console.log(response.data);
-      toast.success("Usuário deletado");
+      toast.success("User deleted");
       setGuest(null);
     } catch (error) {
       console.log(error);
