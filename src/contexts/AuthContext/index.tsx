@@ -32,7 +32,6 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response.data)
         setUser(response.data.user);
 
         if (token && response.data.user.is_superuser == true) {

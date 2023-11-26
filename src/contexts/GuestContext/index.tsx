@@ -23,7 +23,6 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
   const loginGuest = async (formData: TGuestLoginData) => {
     try {
       const response = await api.post("/guest/login/", formData);
-      console.log(response.data);
       setUser(response.data.user);
       localStorage.setItem("@DataHotel:TOKEN", response.data.access);
       localStorage.setItem("@DataHotel:userID", response.data.user.id);

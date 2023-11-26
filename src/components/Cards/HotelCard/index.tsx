@@ -7,20 +7,28 @@ interface CardProps {
   hotel: iHotel;
 }
 
-export const HotelCard = ({hotel}: CardProps) => {
-  const { setShowModal } = useAuth();
-  const { deleteHotel } = useHotel();
+export const HotelCard = ({ hotel }: CardProps) => {
+  const { setShowModal, user } = useAuth();
+  const { deleteHotel,setHotel } = useHotel();
+
+  const handleClick = () => {
+    setShowModal(hotel.id)
+    setHotel(hotel)
+  }
+
   return (
     <>
-      <StyledHotelCard onClick={()=>setShowModal(hotel.full_url)}>
+      <StyledHotelCard onClick={() => handleClick()}>
         <figure>
           <img src={hotel.full_url} alt="Cover" />
         </figure>
         <h3>{hotel.name}</h3>
         <h4>{hotel.address.city}</h4>
-        <div>
-          <button onClick={() => deleteHotel(hotel.id)}>deletar</button>
-        </div>
+        {user?.is_superuser ? (
+          <div className="btns">
+            <button onClick={() => deleteHotel(hotel.id)}>deletar</button>
+          </div>
+        ) : null}
       </StyledHotelCard>
     </>
   );

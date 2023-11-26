@@ -57,3 +57,4 @@ export const StyledBox = styled.div`
         width: 20%;
     }
 `;
+

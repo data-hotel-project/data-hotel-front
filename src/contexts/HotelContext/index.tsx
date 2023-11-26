@@ -53,7 +53,6 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
   const listHotels = async () => {
     try {
       const response = await api.get("/hotel/");
-      console.log(response.data.length)
       setHotels(response.data);
       if (response.data.length == 1) {
         localStorage.setItem("@DataHotel:hotelID", response.data[0].id)

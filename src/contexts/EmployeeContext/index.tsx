@@ -16,7 +16,7 @@ export const EmployeeContext = createContext<IEmployeeContext>(
 
 export const EmployeeProvider = ({ children }: IChildrenProps) => {
 
-  const {user, setUser} = useAuth()
+  const { setUser} = useAuth()
 
   const [employee, setEmployee] = useState<iEmployee | null>(null);
   const [employees, setEmployees] = useState<iEmployee[] | null>(null);
@@ -27,7 +27,6 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
     try {
       const response = await api.post("/employee/login/", formData);
       setUser(response.data.user);
-      console.log(user)
       localStorage.setItem("@DataHotel:TOKEN", response.data.access);
       localStorage.setItem("@DataHotel:userID", response.data.user.id);
       toast.success("Login efetuado com sucesso");
