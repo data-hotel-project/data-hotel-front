@@ -12,13 +12,14 @@ import { useAuth } from "../../contexts/AuthContext";
 
 
 export const EmployeeDashboard = () => {
-    const {userLogout} = useAuth()
+    const {userLogout, user} = useAuth()
 
     const [menuOpen, setMenuOpen] = useState(false);
     const toggleMenu = () => {
       setMenuOpen(!menuOpen);
     };
 
+    console.log(user)
     return (
         <StyledDashboard>
             <StyledNoisy />

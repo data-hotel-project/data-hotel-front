@@ -1,3 +1,4 @@
+import { addressSchemaForm } from './../../validators/addressValidators';
 import styled, { keyframes } from "styled-components";
 
 const openAnimate = keyframes`
@@ -90,3 +91,19 @@ export const StyledH2 = styled.h1`
     font-size: 50px;
   };
 `;
+
+export const StyledUL = styled.ul`
+  margin-top: 40rem;
+  display: flex;
+  flex-direction: flex;
+  align-items: center;
+  
+  gap: 1rem;
+  
+
+  @media (min-width: 600px) {
+    
+  };
+`;
+
+

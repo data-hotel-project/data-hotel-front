@@ -5,7 +5,11 @@ export const hotelSchemaCreateForm = z.object({
   name: z.string(),
   email: z.string(),
   num_rooms: z.number(),
-  image: z.unknown(),
+  full_url: z.unknown(),
+  full_url2: z.unknown().optional(),
+  full_url3: z.unknown().optional(),
+  full_url4: z.unknown().optional(),
+  full_url5: z.unknown().optional(),
   address: addressSchemaForm,
 });
 
@@ -15,7 +19,11 @@ export const hotelSchemaUpdateForm = z.object({
   name: z.string().optional(),
   email: z.string().optional(),
   num_rooms: z.number().optional(),
-  image: z.unknown().optional(),
+  full_url: z.unknown().optional(),
+  full_url2: z.unknown().optional(),
+  full_url3: z.unknown().optional(),
+  full_url4: z.unknown().optional(),
+  full_url5: z.unknown().optional(),
   address: addressSchemaUpdateForm,
 });
 

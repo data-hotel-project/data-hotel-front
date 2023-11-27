@@ -18,30 +18,38 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
   const userId = localStorage.getItem("@DataHotel:userID");
   const hotelId = localStorage.getItem("@DataHotel:hotelID");
 
-  const getLoggedUser = async () => {
-    try {
-      const response = await api.get("/logged/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setUser(response.data);
+  const [showModal, setShowModal] = useState<string>("");
 
-      if (token && response.data.is_superuser == true) {
-        navigate("/adminDashboard");
-        toast.success("Login successfully");
-      } else if (token && response.data.is_staff == true) {
-        localStorage.setItem("@DataHotel:hotelID", response.data.hotel);
-        navigate("/employeeDashboard");
-        toast.success("Login successfully");
-      } else if (token && response.data.is_staff == false) {
-        navigate("/guestDashboard");
-        toast.success("Login successfully");
-      } else {
-        navigate("/");
+  const closeModal = () => {
+    setShowModal("");
+  };
+
+  const getLoggedUser = async () => {
+    if (token) {
+      try {
+        const response = await api.get("/logged/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(response.data.user);
+
+        if (token && response.data.user.is_superuser == true) {
+          navigate("/adminDashboard");
+          toast.success("Login successfully");
+        } else if (token && response.data.user.is_staff == true) {
+          localStorage.setItem("@DataHotel:hotelID", response.data.hotel);
+          navigate("/employeeDashboard");
+          toast.success("Login successfully");
+        } else if (token && response.data.user.is_staff == false) {
+          navigate("/guestDashboard");
+          toast.success("Login successfully");
+        } else {
+          navigate("/");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -68,6 +76,9 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
         hotelId,
         getLoggedUser,
         userLogout,
+        showModal,
+        setShowModal,
+        closeModal,
       }}
     >
       {children}

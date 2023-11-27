@@ -6,12 +6,14 @@ import { EmployeeDashboard } from "../pages/EmployeeDashboard";
 import { AdminDashboard } from "../pages/AdminDashboard";
 import GuestRegister from "../pages/GuestRegister";
 import { ProtectedRoutes } from "./ProtectedRoute";
+import EmployeeLogin from "../pages/EmployeeLogin";
 
 const RoutesMain = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/employee/login" element={<EmployeeLogin />} />
       <Route path="/register" element={<GuestRegister />} />
 
       <Route element={<ProtectedRoutes />}>

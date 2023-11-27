@@ -53,9 +53,8 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
   const listHotels = async () => {
     try {
       const response = await api.get("/hotel/");
-      console.log(response.data.lentgh)
       setHotels(response.data);
-      if (response.data.lentgh == 1) {
+      if (response.data.length == 1) {
         localStorage.setItem("@DataHotel:hotelID", response.data[0].id)
       }
     } catch (error) {
@@ -89,9 +88,9 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
     }
   };
 
-  const deleteHotel = async () => {
+  const deleteHotel = async (id:string) => {
     try {
-      const response = await api.delete(`/hotel/${userId}`, {
+      const response = await api.delete(`/hotel/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
