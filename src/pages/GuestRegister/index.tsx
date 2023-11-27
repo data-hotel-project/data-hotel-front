@@ -32,11 +32,11 @@ const GuestRegister = () => {
     <Background>
       <StyledBody>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="name">DATA HOTEL</h1>
+        <h2 className="name">DATA HOTEL</h2>
           <div className="box">
             <div className="body">
               <div className="box-info">
-                <h1>Register</h1>
+                <h2>Register</h2>
                 <div className="info">
                   <div className="info-part1">
                     <Input
@@ -175,7 +175,7 @@ const GuestRegister = () => {
                 <a href="/login">Already have account?</a>
                 <a href="/">Back</a>
               </div>
-              <Button size={"medium"} backgroundColor={"black"}>
+              <Button size={"medium"} backgroundColor={"transparent"} fontColorHover="var(--secondary-normal-hover)" backgroundColorHover="var(--primary-dark-hover)">
                 Register
               </Button>
             </div>
