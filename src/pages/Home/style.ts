@@ -82,20 +82,24 @@ export const StyledBody = styled.div`
   overflow-y: auto;
 `;
 
-export const StyledH2 = styled.h1`
+export const StyledH2 = styled.h2`
   position: absolute;
-  z-index: 1;
-  margin: 300px;
+  z-index: -1;
+  width: 10px;
+  margin-top: 330px;
   font-size: 30px;
   font-weight: bold;
   font-family: "Brolia";
   padding: 10px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 
   @media (min-width: 600px) {
+    margin-top: 350px;
     font-size: 50px;
+    width: 100%;
   }
 `;
 

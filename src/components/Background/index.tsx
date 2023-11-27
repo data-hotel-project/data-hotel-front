@@ -4,7 +4,8 @@ import { StyledBackground, StyledShadow } from "./style";
 const Background = ({ children }: IChildrenProps) => {
   return (
     <StyledBackground>
-      <StyledShadow>{children}</StyledShadow>
+      <StyledShadow />
+      {children}
     </StyledBackground>
   );
 };

@@ -33,9 +33,9 @@ const Login = () => {
     <Background>
       <StyledBody>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="name">DATA HOTEL</h1>
+          <h2 className="name">DATA HOTEL</h2>
           <div className="box">
-            <h1>Login</h1>
+            <h2>Login</h2>
             <Input
               label="E-mail | Username"
               type="text"
@@ -59,6 +59,14 @@ const Login = () => {
             </div>
 
             <Button size={"medium"} backgroundColor={"black"}>
+              Login
+            </Button>
+            <Button
+              size={"medium"}
+              backgroundColor={"transparent"}
+              fontColorHover="var(--secondary-normal-hover)"
+              backgroundColorHover="var(--primary-dark-hover)"
+            >
               Login
             </Button>
           </div>

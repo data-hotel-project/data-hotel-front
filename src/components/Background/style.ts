@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledBackground = styled.div`
-  position: static;
-  z-index: -1;
+  position: relative;
+  z-index: 1;
   height: 100vh;
   width: 100%;
   background-image: url(/bg.jpg);
@@ -15,8 +15,8 @@ export const StyledBackground = styled.div`
 `;
 
 export const StyledShadow = styled.div`
-  position: relative;
-  z-index: 0;
+  position: absolute;
+  z-index: -1;
   height: 100vh;
   width: 100%;
   background-color: black;

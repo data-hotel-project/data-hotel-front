@@ -23,21 +23,39 @@ const Header: React.FC = () => {
         <FontAwesomeIcon
           icon={faBars}
           style={{ color: "var(--primary-light)" }}
-        />{" "}
+        />
         {/* {menuOpen?'Close Menu':'Open Menu'} */}
       </ToggleButton>
       <MenuContainer open={menuOpen}>
         <Link to={"/login"}>
-          <Button size="medium">Login</Button>
+          <Button
+            size="medium"
+            fontColorHover="var(--secondary-normal-hover)"
+            backgroundColorHover="var(--primary-dark-hover)"
+          >
+            Guest Login
+          </Button>
         </Link>
         <Link to={"/register"}>
-          <Button size="medium">Register</Button>
+          <Button
+            size="medium"
+            fontColorHover="var(--secondary-normal-hover)"
+            backgroundColorHover="var(--primary-dark-hover)"
+          >
+            Register
+          </Button>
         </Link>
         <Link to={"/hotels"}>
-          <Button size="medium">Hotels</Button>
+          <Button
+            size="medium"
+            fontColorHover="var(--secondary-normal-hover)"
+            backgroundColorHover="var(--primary-dark-hover)"
+          >
+            Hotels
+          </Button>
         </Link>
       </MenuContainer>
-      <h2>DATA HOTEL</h2>
+      <h3>DATA HOTEL</h3>
     </StyledHeader>
   );
 };

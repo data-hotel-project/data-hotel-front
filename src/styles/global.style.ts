@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html, body, div, span, applet, object, iframe,
-    h3, h4, h5, h6, p, blockquote, pre,
+    h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
     del, dfn, em, img, ins, kbd, q, s, samp,
     small, strike, strong, sub, sup, tt, var,
@@ -51,13 +51,17 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         font-family: var(--font);
         vertical-align: baseline;
-        font-family: var(--font);
         list-style: none;
-        color: #FFF;
+        color: var(--primary-light);
     }
 
     h1, h2 {
         font-family: var(--title-font);
+    }
+
+    h3 {
+        font-size: 10px;
+        font-family: var(--font);
     }
 
     article, aside, details, figcaption, figure, 
