@@ -26,8 +26,7 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
       setUser(response.data.user);
       localStorage.setItem("@DataHotel:TOKEN", response.data.access);
       localStorage.setItem("@DataHotel:userID", response.data.user.id);
-      getLoggedUser()
-      
+      getLoggedUser();
     } catch (error) {
       console.log(error);
       toast.error("username or password invalid");

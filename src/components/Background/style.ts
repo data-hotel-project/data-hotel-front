@@ -37,4 +37,3 @@ export const StyledNoisy = styled.div`
   opacity: 5%;
   overflow-y: auto;
 `;
-

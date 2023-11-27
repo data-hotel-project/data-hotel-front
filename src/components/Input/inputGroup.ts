@@ -1,12 +1,11 @@
 import styled from "styled-components";
 interface iInputGroup {
   className: String;
-  inputValue: string;
+  inputvalue: string;
 }
 const InputGroup = styled.div<iInputGroup>`
   position: relative;
   width: 100%;
-  
 
   input {
     width: 100%;
@@ -46,12 +45,12 @@ const InputGroup = styled.div<iInputGroup>`
         ? "#1DA1F2"
         : "#dcdcdc"};
     transform: ${(props) =>
-      props.inputValue === ""
+      props.inputvalue === ""
         ? "translateY(1rem)"
         : " translateY(-50%) scale(0.8)"};
     background-color: ${(props) =>
-      props.inputValue !== "" ? "#fff" : "transparent"};
-    padding: ${(props) => (props.inputValue !== "" ? "0 0.2em" : 0)};
+      props.inputvalue !== "" ? "#fff" : "transparent"};
+    padding: ${(props) => (props.inputvalue !== "" ? "0 0.2em" : 0)};
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   input:focus {
@@ -59,7 +58,7 @@ const InputGroup = styled.div<iInputGroup>`
   }
   input:focus ~ label {
     transform: translateY(-50%) scale(0.8);
-    background-color: rgba(223, 99, 71,0.3);
+    background-color: rgba(223, 99, 71, 0.3);
     padding: 0 0.2em;
   }
 

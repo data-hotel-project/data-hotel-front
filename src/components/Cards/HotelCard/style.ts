@@ -11,6 +11,7 @@ export const StyledHotelCard = styled.li`
   figure {
     img {
       width: 100%;
+      max-height: 100%;
     }
   }
   h3 {
