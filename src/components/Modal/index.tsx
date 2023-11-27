@@ -2,7 +2,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { StyledModal } from "./styles";
 
 interface ModalProps {
-  title: string;
+  title: string | undefined;
   children: React.ReactNode;
 }
 

@@ -33,7 +33,7 @@ const Header: React.FC = () => {
             fontColorHover="var(--secondary-normal-hover)"
             backgroundColorHover="var(--primary-dark-hover)"
           >
-            Guest Login
+            Login
           </Button>
         </Link>
         <Link to={"/register"}>

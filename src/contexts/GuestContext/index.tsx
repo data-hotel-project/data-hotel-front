@@ -21,6 +21,8 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
   const { token, userId, navigate } = useContext(AuthContext);
 
   const loginGuest = async (formData: TGuestLoginData) => {
+    console.log("guest");
+
     try {
       const response = await api.post("/guest/login/", formData);
       setUser(response.data.user);

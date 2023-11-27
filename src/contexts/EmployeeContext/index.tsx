@@ -23,6 +23,8 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
   const { token, userId, navigate } = useContext(AuthContext);
 
   const loginEmployee = async (formData: TEmployeeLonginData) => {
+    console.log("isEmployee");
+
     try {
       const response = await api.post("/employee/login/", formData);
       setUser(response.data.user);

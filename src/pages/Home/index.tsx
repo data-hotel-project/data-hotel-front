@@ -10,12 +10,12 @@ import Teste from "../../components/Teste";
 
 export const Home = () => {
   const { showModal } = useAuth();
-  const { hotels } = useHotel();
+  const { hotels, hotel } = useHotel();
 
   return (
     <>
       {showModal != "" ? (
-        <Modal title={"Modal Teste"}>
+        <Modal title={hotel?.name}>
           <Teste />
         </Modal>
       ) : null}
