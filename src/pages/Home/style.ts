@@ -1,5 +1,9 @@
-import { addressSchemaForm } from './../../validators/addressValidators';
+// import { addressSchemaForm } from "./../../validators/addressValidators";
 import styled, { keyframes } from "styled-components";
+
+interface MenuProps {
+  open?: boolean;
+}
 
 const openAnimate = keyframes`
   0% {
@@ -19,7 +23,7 @@ const closeAnimate = keyframes`
   }
 `;
 
-export const MenuContainer = styled.div`
+export const MenuContainer = styled.div<MenuProps>`
   position: fixed;
   z-index: 2;
   top: 0;
@@ -27,7 +31,10 @@ export const MenuContainer = styled.div`
   height: 100%;
   width: 200px;
   background-color: var(--primary-normal);
-  padding: 20px;
+  padding-top: 55px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -36,7 +43,7 @@ export const MenuContainer = styled.div`
   animation: ${({ open }) => (open ? openAnimate : closeAnimate)} 0.3s both;
 
   a {
-    margin-top: 100px;
+    margin-top: 70px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -51,7 +58,7 @@ export const Ancor = styled.a`
   &.active {
     background-color: var(--primary-light-active);
   }
-`
+`;
 
 export const ToggleButton = styled.button`
   z-index: 3;
@@ -82,7 +89,7 @@ export const StyledH2 = styled.h2`
   margin-top: 330px;
   font-size: 30px;
   font-weight: bold;
-  font-family: 'Brolia';
+  font-family: "Brolia";
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -93,21 +100,17 @@ export const StyledH2 = styled.h2`
     margin-top: 350px;
     font-size: 50px;
     width: 100%;
-  };
+  }
 `;
 
 export const StyledUL = styled.ul`
-  margin-top: 40rem;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
   display: flex;
   flex-direction: flex;
+  justify-content: center;
   align-items: center;
-  
+  background: #161615;
+
   gap: 1rem;
-  
-
-  @media (min-width: 600px) {
-    
-  };
 `;
-
-

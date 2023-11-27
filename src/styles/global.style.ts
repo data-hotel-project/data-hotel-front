@@ -113,25 +113,23 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
     }
 
-      /* width */
+    // width
     ::-webkit-scrollbar {
         width: 10px;
     }
 
-  /* Track */
+    // Track
     ::-webkit-scrollbar-track {
-        background: var(--main-color4);
-        margin: 1rem;
-        border-radius: 1.6rem;
+        background: var(--primary-normal);
     }
 
     ::-webkit-scrollbar-thumb {
-        background: var(--main-color2);
+        background: var(--secondary-normal-active);
         border-radius: 1.6rem;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: var(--main-color);
+        background: var(--secondary-normal);
     }
 `;
 

@@ -24,7 +24,7 @@ const Button = ({
 }: iButtonProps) => {
   return (
     <StyledButton
-      backgroundColor={backgroundColor}
+      backgroundcolor={backgroundColor}
       size={size}
       fontColor={fontColor}
       borderColor={borderColor}

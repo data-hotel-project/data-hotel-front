@@ -7,7 +7,7 @@ interface ModalProps {
 }
 
 export const Modal = ({ title, children }: ModalProps) => {
-  const { setShowModal, closeModal, showModal } = useAuth();
+  const { closeModal, showModal } = useAuth();
 
   return (
     <StyledModal>
@@ -18,9 +18,9 @@ export const Modal = ({ title, children }: ModalProps) => {
         <div className="modal" onClick={(e) => e.stopPropagation()}>
           <header className="header">
             <h4 className="title">{title}</h4>
-            <div className="close" onClick={() => setShowModal("")}>
+            <button className="close" onClick={closeModal}>
               x
-            </div>
+            </button>
           </header>
           <div className="content">{children}</div>
         </div>

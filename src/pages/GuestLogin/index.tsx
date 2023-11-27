@@ -6,12 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 // import { useEmployee } from "../../contexts/EmployeeContext";
 import { useGuest } from "../../contexts/GuestContext";
 import { guestSchemaLogin } from "../../validators/guestValidators";
-import { StyledBody } from "./style";
+import { BoxIsEmployee, StyledBody } from "./style";
 import Background from "../../components/Background";
+import { useState } from "react";
+import { useEmployee } from "../../contexts/EmployeeContext";
 
 const Login = () => {
-  // const { employeeLogin } = useEmployee()
   const { loginGuest } = useGuest();
+  const { loginEmployee } = useEmployee();
+  const [isEmployee, setIsEmployee] = useState(false);
 
   const {
     register,
@@ -23,14 +26,14 @@ const Login = () => {
   });
 
   const onSubmit = async (data: iLoginRequest) => {
-    await loginGuest(data);
+    isEmployee ? await loginEmployee(data) : await loginGuest(data);
   };
 
   return (
     <Background>
       <StyledBody>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="name">DATA HOTEL</h2>
+          <h2 className="name">DATA HOTEL</h2>
           <div className="box">
             <h2>Login</h2>
             <Input
@@ -55,8 +58,27 @@ const Login = () => {
               <a href="/register">Still don't have account?</a>
             </div>
 
-            <Button size={"medium"} backgroundColor={"transparent"} fontColorHover="var(--secondary-normal-hover)" backgroundColorHover="var(--primary-dark-hover)">Login</Button>
+            <Button size={"medium"} backgroundColor={"black"}>
+              Login
+            </Button>
+            <Button
+              size={"medium"}
+              backgroundColor={"transparent"}
+              fontColorHover="var(--secondary-normal-hover)"
+              backgroundColorHover="var(--primary-dark-hover)"
+            >
+              Login
+            </Button>
           </div>
+          <BoxIsEmployee
+            onClick={() => setIsEmployee(!isEmployee)}
+            isEmployee={isEmployee}
+          >
+            <div className="boxCondition">
+              <div className="condition"></div>
+            </div>
+            <h4>IsEmployee?</h4>
+          </BoxIsEmployee>
         </form>
       </StyledBody>
     </Background>

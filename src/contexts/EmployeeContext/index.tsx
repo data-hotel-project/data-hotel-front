@@ -15,13 +15,12 @@ export const EmployeeContext = createContext<IEmployeeContext>(
 );
 
 export const EmployeeProvider = ({ children }: IChildrenProps) => {
-
-  const { setUser} = useAuth()
+  const { setUser } = useAuth();
 
   const [employee, setEmployee] = useState<iEmployee | null>(null);
   const [employees, setEmployees] = useState<iEmployee[] | null>(null);
 
-  const { token, userId, navigate } = useContext(AuthContext)
+  const { token, userId, navigate } = useContext(AuthContext);
 
   const loginEmployee = async (formData: TEmployeeLonginData) => {
     try {

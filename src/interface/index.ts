@@ -26,7 +26,7 @@ export interface iInputProps {
 }
 
 export interface iButtonStyledProps {
-  backgroundColor?: string;
+  backgroundcolor?: string;
   size: "big" | "medium";
   fontColor?: string;
   borderColor?: string;

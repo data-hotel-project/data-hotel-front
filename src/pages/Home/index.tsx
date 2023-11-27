@@ -9,29 +9,26 @@ import { Modal } from "../../components/Modal";
 import Teste from "../../components/Teste";
 
 export const Home = () => {
-  const {user, showModal} = useAuth();
+  const { showModal } = useAuth();
   const { hotels } = useHotel();
 
-  console.log(user)
   return (
     <>
-      {showModal != "" ? <Modal title={"Modal Teste"}><Teste url="http://res.cloudinary.com/dl6chlmjd/image/upload/v1700924204/igmrhpw7lntvlfwtkagw.jpg"/></Modal>:null}
-
+      {showModal != "" ? (
+        <Modal title={"Modal Teste"}>
+          <Teste />
+        </Modal>
+      ) : null}
       <StyledHeader />
       <Background>
         <Header />
         <StyledH2>GRAND DATA HOTEL</StyledH2>
-
-        <StyledUL>
-          {hotels?.map((hotel) => (
-            <HotelCard
-              key={hotel.id}
-              hotel={hotel}
-            />
-            
-          ))}
-        </StyledUL>
       </Background>
+      <StyledUL>
+        {hotels?.map((hotel) => (
+          <HotelCard key={hotel.id} hotel={hotel} />
+        ))}
+      </StyledUL>
     </>
   );
 };

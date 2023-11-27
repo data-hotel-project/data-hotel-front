@@ -1,15 +1,13 @@
 import { useHotel } from "../../contexts/HotelContext";
-import { StyledTeste } from "./style";
+import { StyledHotelInfo } from "./style";
 
-const Teste = () => {
+const HotelInfo = () => {
   const { hotel } = useHotel();
   return (
-    <>
-      <StyledTeste>
-        <img src={hotel?.full_url} alt="img" />
-      </StyledTeste>
-    </>
+    <StyledHotelInfo>
+      <img src={hotel?.full_url} alt="img" />
+    </StyledHotelInfo>
   );
 };
 
-export default Teste;
+export default HotelInfo;
