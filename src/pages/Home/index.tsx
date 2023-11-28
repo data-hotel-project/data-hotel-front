@@ -6,7 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useHotel } from "../../contexts/HotelContext";
 import { HotelCard } from "../../components/Cards/HotelCard";
 import { Modal } from "../../components/Modal";
-import Teste from "../../components/Teste";
+import HotelInfo from "../../components/HotelInfo";
 
 export const Home = () => {
   const { showModal } = useAuth();
@@ -16,7 +16,7 @@ export const Home = () => {
     <>
       {showModal != "" ? (
         <Modal title={hotel?.name}>
-          <Teste />
+          <HotelInfo />
         </Modal>
       ) : null}
       <StyledHeader />

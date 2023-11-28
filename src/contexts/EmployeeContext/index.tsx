@@ -23,8 +23,6 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
   const { token, userId, navigate } = useContext(AuthContext);
 
   const loginEmployee = async (formData: TEmployeeLonginData) => {
-    console.log("isEmployee");
-
     try {
       const response = await api.post("/employee/login/", formData);
       setUser(response.data.user);
@@ -45,12 +43,11 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+
       toast.success("Successful registration");
       navigate("employee/login");
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -60,7 +57,6 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
       setEmployees(response.data);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -70,7 +66,6 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
       setUser(response.data);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -85,7 +80,6 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
       navigate(`/${userId}/dashboard`);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -96,12 +90,11 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+
       toast.success("Fired employee");
       setUser(null);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 

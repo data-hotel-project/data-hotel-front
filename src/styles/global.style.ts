@@ -28,6 +28,8 @@ const GlobalStyle = createGlobalStyle`
         --sucess-1: #18794E;
         --sucess-2: #CCEBD7;
 
+        --message-error: #e12525;
+
         --title-font: 'Brolia';
         --font: 'Roboto';
     }

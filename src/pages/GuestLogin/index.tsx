@@ -61,20 +61,12 @@ const Login = () => {
             <Button size={"medium"} backgroundColor={"black"}>
               Login
             </Button>
-            {/* <Button
-              size={"medium"}
-              backgroundColor={"transparent"}
-              fontColorHover="var(--secondary-normal-hover)"
-              backgroundColorHover="var(--primary-dark-hover)"
-            >
-              Login
-            </Button> */}
           </div>
-          <BoxIsEmployee
-            onClick={() => setIsEmployee(!isEmployee)}
-            isEmployee={isEmployee}
-          >
-            <div className="boxCondition">
+          <BoxIsEmployee isEmployee={isEmployee}>
+            <div
+              className="boxCondition"
+              onClick={() => setIsEmployee(!isEmployee)}
+            >
               <div className="condition"></div>
             </div>
             <h4>IsEmployee?</h4>

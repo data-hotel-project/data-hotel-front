@@ -1,8 +1,8 @@
 import { RiErrorWarningFill } from "react-icons/ri";
 import { ParagraphError } from "./style";
-import { iProviderProps } from "../../interface";
+import { IChildrenProps } from "../../interface";
 
-export const ErrorMessage = ({ children }: iProviderProps) => {
+export const ErrorMessage = ({ children }: IChildrenProps) => {
   return (
     <ParagraphError>
       {children && <RiErrorWarningFill />}

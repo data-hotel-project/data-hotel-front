@@ -41,7 +41,7 @@ export const StyledModal = styled.div`
 
     .close {
       color: #232323;
-      background-color: #f34848;
+      background-color: #dcdcdc;
       border-radius: 50%;
       width: 25px;
       height: 25px;
@@ -50,7 +50,7 @@ export const StyledModal = styled.div`
       transition: 0.3s;
 
       &:hover {
-        background-color: #cb3636;
+        background-color: #b9b4b4;
         transition: 0.3s;
       }
     }

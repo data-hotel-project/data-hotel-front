@@ -1,41 +1,65 @@
 import { z } from "zod";
-import { addressSchemaForm, addressSchemaUpdateForm } from "./addressValidators";
+import {
+  addressSchemaForm,
+  addressSchemaUpdateForm,
+} from "./addressValidators";
 
-export const guestSchemaForm = z.object({
+export const guestSchemaForm = z
+  .object({
+    username: z
+      .string()
+      .refine((value) => value.trim() !== "", "Username is required"),
+    email: z
+      .string()
+      .refine((value) => value.trim() !== "", "Email is required"),
+    password: z
+      .string()
+      .refine((value) => value.trim() !== "", "Password is required"),
+    birthdate: z
+      .string()
+      .refine((value) => value.trim() !== "", "Birthdate is required"),
+
+    nationality: z
+      .string()
+      .refine((value) => value.trim() !== "", "Nationality is required"),
+    contact: z
+      .string()
+      .refine((value) => value.trim() !== "", "Contact is required"),
+    contact_aditional: z.string(),
+    emergency_num: z
+      .string()
+      .refine((value) => value.trim() !== "", "Emergency contact is required"),
+    address: addressSchemaForm,
+    password_confirmation: z
+      .string()
+      .refine((value) => value.trim() !== "", "Confirm Password is required"),
+  })
+  .refine((data) => data.password === data.password_confirmation, {
+    message: "Senhas não são iguais!",
+    path: ["password_confirmation"],
+  });
+
+export type TGuestFormData = z.infer<typeof guestSchemaForm>;
+
+export const guestSchemaUpdateForm = z.object({
   username: z.string(),
   email: z.string(),
   password: z.string(),
-  birthdate: z.string(),
-  nationality: z.string(),
   contact: z.string(),
   emergency_num: z.string(),
-  contact_aditional: z.string().optional(),
-  address: addressSchemaForm,
-  password_confirmation: z.string(),
-})
-.refine((data) => data.password === data.password_confirmation, {
-  message: "Senhas não são iguais!",
-  path: ["password_confirmation"],
-});
-
-export type TGuestFormData = z.infer<typeof guestSchemaForm>
-
-export const guestSchemaUpdateForm = z.object({
-  username: z.string().optional(),
-  email: z.string().optional(),
-  password: z.string().optional(),
-  contact: z.string().optional(),
-  emergency_num: z.string().optional(),
-  contact_aditional: z.string().optional(),
+  contact_aditional: z.string(),
   address: addressSchemaUpdateForm,
 });
 
-export type TGuestUpdateFormData = z.infer<typeof guestSchemaUpdateForm>
+export type TGuestUpdateFormData = z.infer<typeof guestSchemaUpdateForm>;
 
 export const guestSchemaLogin = z.object({
-  username: z.string(),
-  password: z.string()
-})
-export type TGuestLoginData = z.infer<typeof guestSchemaLogin>
+  username: z
+    .string()
+    .refine((value) => value.trim() !== "", "Username is required"),
+  password: z
+    .string()
+    .refine((value) => value.trim() !== "", "Password is required"),
+});
 
-
+export type TGuestLoginData = z.infer<typeof guestSchemaLogin>;
