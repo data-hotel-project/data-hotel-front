@@ -28,11 +28,11 @@ export interface iInputProps {
 export interface iButtonStyledProps {
   $backgroundColor?: string;
   size: "big" | "medium";
-  fontColor?: string;
-  borderColor?: string;
-  backgroundColorHover?: string;
-  borderColorHover?: string;
-  fontColorHover?: string;
+  $fontColor?: string;
+  $borderColor?: string;
+  $backgroundColorHover?: string;
+  $borderColorHover?: string;
+  $fontColorHover?: string;
 }
 
 export interface iAddress {

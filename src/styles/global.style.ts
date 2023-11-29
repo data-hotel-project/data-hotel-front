@@ -74,11 +74,6 @@ const GlobalStyle = createGlobalStyle`
     body {
 	    line-height: 1;
         height: 100vh;
-        font-family: 'Roboto', sans-serif;
-    }
-
-    ol, ul {
-	    list-style: none;
     }
 
     button {

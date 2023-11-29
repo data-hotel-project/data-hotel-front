@@ -1,25 +1,38 @@
 import styled from "styled-components";
 
-export const StyledContainer = styled.div`
-    height: 70%;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    border-top: 1px solid var(--secondary-normal);
-    background-color: transparent;
-    margin-top: 30px;
-    align-items: center;
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 
-    @media (min-width: 600px) {
-        flex-direction: row;
-        align-items: flex-start;
-    }
+  width: 90%;
+  height: 460px;
+
+  margin-top: 10rem;
+  border: 1px solid var(--secondary-normal);
 `;
 
-export const StyledBox = styled.div`
-    height: 70vh;
-    width: 100%;
-    background-color: transparent;
-    border-left: 1px solid var(--secondary-normal);
-    border-right: 1px solid var(--secondary-normal);
+export const UlContainer = styled.ul`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  height: 87%;
+  width: 97%;
+
+  overflow-y: scroll;
+`;
+
+export const LiContainer = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 160px;
+  width: 150px;
+
+  padding-bottom: 15px;
+  border: 1px solid var(--secondary-normal);
 `;
