@@ -65,7 +65,7 @@ const Input = ({
   };
 
   return (
-    <InputGroup className={className} inputvalue={value} {...rest}>
+    <InputGroup className={className} $inputValue={value} {...rest}>
       <input
         autoComplete="off"
         id={id}

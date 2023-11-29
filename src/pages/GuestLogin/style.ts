@@ -1,15 +1,16 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 interface BoxIsEmployeeProps {
-  isEmployee: boolean;
+  $isEmployee: boolean;
 }
 
 export const StyledBody = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 100%;
-  position: relative;
 
   .name {
     text-align: center;
@@ -17,22 +18,18 @@ export const StyledBody = styled.div`
   }
 
   .box {
-    border-radius: 1rem;
-    background-color: var(--primary-normal);
-    padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    padding: 1.5rem;
     gap: 0.5rem;
+
+    border-radius: 1rem;
+    background-color: var(--primary-normal);
 
     h2 {
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
       color: var(--primary-light);
-    }
-
-    input {
-      border-color: var(--secondary-normal);
-      background-color: transparent;
     }
 
     input::placeholder {
@@ -81,36 +78,42 @@ export const BoxIsEmployee = styled.div<BoxIsEmployeeProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 150px;
-  height: 20px;
   gap: 10px;
-  margin-top: 10px;
+
+  max-width: 150px;
   width: 100%;
+  height: 20px;
+  margin-top: 10px;
 
   .boxCondition {
-    padding: 2px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     height: 20px;
     width: 40px;
-    background: ${({ isEmployee }) => (isEmployee ? "#00800029" : "#ff000029")};
-    border: 1px solid;
-    border-color: ${({ isEmployee }) =>
-      isEmployee ? "#008000b0" : "#ff000085"};
-    transition: 0.3s;
-    border-radius: 20px;
+    padding: 2px;
     cursor: pointer;
+
+    border-radius: 20px;
+    transition: 0.3s;
+
+    ${({ $isEmployee }) => css`
+      background: ${$isEmployee ? "#00800029" : "#ff000029"};
+      border: 1px solid ${$isEmployee ? "#008000b0" : "#ff000085"};
+    `}
 
     .condition {
       display: flex;
       height: 16px;
       width: 20px;
+
       background: white;
       border-radius: 20px;
-      animation: ${({ isEmployee }) =>
-          isEmployee ? openAnimateCondition : closeAnimateCondition}
-        0.3s both;
+
+      ${({ $isEmployee }) => css`
+        animation: ${$isEmployee ? openAnimateCondition : closeAnimateCondition}
+          0.3s both;
+      `}
     }
   }
 

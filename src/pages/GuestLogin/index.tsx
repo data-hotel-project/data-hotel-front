@@ -63,7 +63,7 @@ const Login = () => {
             </Button>
           </div>
         </form>
-        <BoxIsEmployee isEmployee={isEmployee}>
+        <BoxIsEmployee $isEmployee={isEmployee}>
           <div
             className="boxCondition"
             onClick={() => setIsEmployee(!isEmployee)}
