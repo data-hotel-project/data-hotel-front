@@ -23,8 +23,6 @@ const GuestRegister = () => {
   });
 
   const onSubmit = async (data: TGuestFormData) => {
-    console.log(data);
-
     await createGuest(data);
   };
 
@@ -32,7 +30,7 @@ const GuestRegister = () => {
     <Background>
       <StyledBody>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="name">DATA HOTEL</h2>
+          <h2 className="name">DATA HOTEL</h2>
           <div className="box">
             <div className="body">
               <div className="box-info">
@@ -124,7 +122,7 @@ const GuestRegister = () => {
                   <Input
                     label="Street"
                     type="text"
-                    errorMessage={errors.address?.message}
+                    errorMessage={errors.address?.street?.message}
                     register={register}
                     id="address.street"
                     getValues={getValues}
@@ -133,7 +131,7 @@ const GuestRegister = () => {
                     <Input
                       label="Number"
                       type="text"
-                      errorMessage={errors.address?.message}
+                      errorMessage={errors.address?.number?.message}
                       register={register}
                       id="address.number"
                       getValues={getValues}
@@ -141,7 +139,7 @@ const GuestRegister = () => {
                     <Input
                       label="City"
                       type="text"
-                      errorMessage={errors.address?.message}
+                      errorMessage={errors.address?.city?.message}
                       register={register}
                       id="address.city"
                       getValues={getValues}
@@ -152,7 +150,7 @@ const GuestRegister = () => {
                     <Input
                       label="State"
                       type="text"
-                      errorMessage={errors.address?.message}
+                      errorMessage={errors.address?.state?.message}
                       register={register}
                       id="address.state"
                       getValues={getValues}
@@ -160,7 +158,7 @@ const GuestRegister = () => {
                     <Input
                       label="Complement"
                       type="text"
-                      errorMessage={errors.address?.message}
+                      errorMessage={errors.address?.complement?.message}
                       register={register}
                       id="address.complement"
                       getValues={getValues}
@@ -175,7 +173,12 @@ const GuestRegister = () => {
                 <a href="/login">Already have account?</a>
                 <a href="/">Back</a>
               </div>
-              <Button size={"medium"} backgroundColor={"transparent"} fontColorHover="var(--secondary-normal-hover)" backgroundColorHover="var(--primary-dark-hover)">
+              <Button
+                size={"medium"}
+                backgroundColor={"transparent"}
+                fontColorHover="var(--secondary-normal-hover)"
+                backgroundColorHover="var(--primary-dark-hover)"
+              >
                 Register
               </Button>
             </div>

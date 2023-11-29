@@ -21,8 +21,6 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
   const { token, userId, navigate } = useContext(AuthContext);
 
   const loginGuest = async (formData: TGuestLoginData) => {
-    console.log("guest");
-
     try {
       const response = await api.post("/guest/login/", formData);
       setUser(response.data.user);
@@ -38,12 +36,11 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
   const createGuest = async (formData: TGuestFormData) => {
     try {
       const response = await api.post("/guest/", formData);
-      console.log(response.data);
+
       toast.success("Successful registration");
       navigate("/login");
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -53,7 +50,6 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
       setGuests(response.data);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -63,7 +59,6 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
       setGuest(response.data);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -78,7 +73,6 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
       navigate(`/${userId}/dashboard`);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -89,12 +83,11 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+
       toast.success("User deleted");
       setGuest(null);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 

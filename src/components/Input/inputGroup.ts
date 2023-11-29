@@ -40,7 +40,7 @@ const InputGroup = styled.div<iInputGroup>`
       props.className === "error"
         ? "#E2142D"
         : props.className === "sucess"
-        ? "#4BAD31"
+        ? "#5ea74a"
         : props.className === "done"
         ? "#1DA1F2"
         : "#dcdcdc"};
@@ -49,16 +49,18 @@ const InputGroup = styled.div<iInputGroup>`
         ? "translateY(1rem)"
         : " translateY(-50%) scale(0.8)"};
     background-color: ${(props) =>
-      props.inputvalue !== "" ? "#fff" : "transparent"};
+      props.inputvalue === "" ? "transparent" : "var(--primary-normal)"};
     padding: ${(props) => (props.inputvalue !== "" ? "0 0.2em" : 0)};
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   input:focus {
     outline: none;
   }
+
   input:focus ~ label {
     transform: translateY(-50%) scale(0.8);
-    background-color: rgba(223, 99, 71, 0.3);
+    background-color: var(--primary-normal);
     padding: 0 0.2em;
   }
 
@@ -73,7 +75,7 @@ const InputGroup = styled.div<iInputGroup>`
     display: flex;
     align-items: center;
 
-    :hover {
+    /* :hover {
       background-color: rgba(101, 119, 134, 0.1);
       transition: all 0.2s;
     }
@@ -81,7 +83,7 @@ const InputGroup = styled.div<iInputGroup>`
     :active {
       background-color: rgba(101, 119, 134, 0.3);
       transition: all 0.2s;
-    }
+    } */
   }
 `;
 export default InputGroup;

@@ -26,7 +26,6 @@ export const AdminDashboard = () => {
     setMenuOpen(!menuOpen);
   };
 
-  console.log(user);
   return (
     <StyledDashboard>
       <StyledNoisy />

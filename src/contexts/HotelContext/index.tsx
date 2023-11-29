@@ -20,7 +20,6 @@ import { AuthContext } from "../AuthContext";
 export const HotelContext = createContext<IHotelContext>({} as IHotelContext);
 
 export const HotelProvider = ({ children }: IChildrenProps) => {
-
   const [hotel, setHotel] = useState<iHotel | null>(null);
   const [hotels, setHotels] = useState<iHotel[] | null>(null);
 
@@ -30,9 +29,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
   const [reservation, setReservation] = useState<iReservation | null>(null);
   const [reservations, setReservations] = useState<iReservation[] | null>(null);
 
-  const { token, userId, hotelId, navigate } = useContext(AuthContext)
-  
-  
+  const { token, userId, hotelId, navigate } = useContext(AuthContext);
 
   const createHotel = async (formData: THotelCreateFormData) => {
     try {
@@ -41,12 +38,11 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+
       toast.success("Successful registration");
       navigate("/login");
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -55,11 +51,10 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
       const response = await api.get("/hotel/");
       setHotels(response.data);
       if (response.data.length == 1) {
-        localStorage.setItem("@DataHotel:hotelID", response.data[0].id)
+        localStorage.setItem("@DataHotel:hotelID", response.data[0].id);
       }
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -69,7 +64,6 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
       setHotel(response.data);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -84,23 +78,21 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
       navigate(`/adminDashboard`);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
-  const deleteHotel = async (id:string) => {
+  const deleteHotel = async (id: string) => {
     try {
       const response = await api.delete(`/hotel/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+
       toast.success("User deleted");
       setHotel(null);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -117,11 +109,10 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+
       toast.success("Room successful registration");
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -131,7 +122,6 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
       setRooms(response.data);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -141,7 +131,6 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
       setRoom(response.data);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -156,7 +145,6 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
       navigate(`/employeeDashboard`);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -167,12 +155,11 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+
       toast.success("Romm deleted");
       setRoom(null);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -185,11 +172,10 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+
       toast.success("Revervation successful registration");
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -199,7 +185,6 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
       setReservations(response.data);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -209,7 +194,6 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
       setReservation(response.data);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -228,7 +212,6 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
       navigate(`/${userId}/dashboard`);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
@@ -239,12 +222,11 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+
       toast.success("Reservation deleted");
       setReservation(null);
     } catch (error) {
       console.log(error);
-      toast.error(`${error}`);
     }
   };
 
