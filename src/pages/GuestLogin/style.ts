@@ -9,10 +9,7 @@ export const StyledBody = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-
-  form {
-    position: relative;
-  }
+  position: relative;
 
   .name {
     text-align: center;
@@ -78,10 +75,13 @@ const closeAnimateCondition = keyframes`
 `;
 
 export const BoxIsEmployee = styled.div<BoxIsEmployeeProps>`
+  position: absolute;
+  top: 5px;
+  right: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px;
+  max-width: 150px;
   height: 20px;
   gap: 10px;
   margin-top: 10px;
@@ -94,7 +94,10 @@ export const BoxIsEmployee = styled.div<BoxIsEmployeeProps>`
     justify-content: flex-start;
     height: 20px;
     width: 40px;
-    background: ${({ isEmployee }) => (isEmployee ? "green" : "red")};
+    background: ${({ isEmployee }) => (isEmployee ? "#00800029" : "#ff000029")};
+    border: 1px solid;
+    border-color: ${({ isEmployee }) =>
+      isEmployee ? "#008000b0" : "#ff000085"};
     transition: 0.3s;
     border-radius: 20px;
     cursor: pointer;
