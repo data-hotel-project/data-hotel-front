@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { IEmployeeContext } from "./@types";
 import { api } from "../../server/Api";
 import { toast } from "react-toastify";
@@ -8,19 +8,17 @@ import {
   TEmployeeLonginData,
   TEmployeeUpdateFormData,
 } from "../../validators/employeeValidators";
-import { AuthContext, useAuth } from "../AuthContext";
+import { useAuth } from "..";
 
 export const EmployeeContext = createContext<IEmployeeContext>(
   {} as IEmployeeContext
 );
 
 export const EmployeeProvider = ({ children }: IChildrenProps) => {
-  const { setUser } = useAuth();
+  const { setUser, token, userId, navigate } = useAuth();
 
   const [employee, setEmployee] = useState<iEmployee | null>(null);
   const [employees, setEmployees] = useState<iEmployee[] | null>(null);
-
-  const { token, userId, navigate } = useContext(AuthContext);
 
   const loginEmployee = async (formData: TEmployeeLonginData) => {
     try {
@@ -28,7 +26,8 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
       setUser(response.data.user);
       localStorage.setItem("@DataHotel:TOKEN", response.data.access);
       localStorage.setItem("@DataHotel:userID", response.data.user.id);
-      toast.success("Login efetuado com sucesso");
+
+      toast.success("Login successfully");
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -117,5 +116,3 @@ export const EmployeeProvider = ({ children }: IChildrenProps) => {
     </EmployeeContext.Provider>
   );
 };
-
-export const useEmployee = () => useContext(EmployeeContext);

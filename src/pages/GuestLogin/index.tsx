@@ -1,15 +1,13 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { iLoginRequest } from "../../interface";
+import Background from "../../components/Background";
 import Input from "../../components/Input";
 import Button from "../../components/button";
-import { zodResolver } from "@hookform/resolvers/zod";
-// import { useEmployee } from "../../contexts/EmployeeContext";
-import { useGuest } from "../../contexts/GuestContext";
+import { useEmployee, useGuest } from "../../contexts";
+import { iLoginRequest } from "../../interface";
 import { guestSchemaLogin } from "../../validators/guestValidators";
 import { BoxIsEmployee, StyledBody } from "./style";
-import Background from "../../components/Background";
-import { useState } from "react";
-import { useEmployee } from "../../contexts/EmployeeContext";
 
 const Login = () => {
   const { loginGuest } = useGuest();

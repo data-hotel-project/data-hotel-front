@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IChildrenProps, iEmployee, iGuest } from "../../interface";
 import { iAuthProviderData } from "./@types";
@@ -40,7 +40,6 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
         } else if (token && response.data.user.is_staff == true) {
           localStorage.setItem("@DataHotel:hotelID", response.data.hotel);
           navigate("/employeeDashboard");
-          toast.success("Login successfully");
         } else if (token && response.data.user.is_staff == false) {
           navigate("/guestDashboard");
           toast.success("Login successfully");
@@ -85,5 +84,3 @@ export const AuthProvider = ({ children }: IChildrenProps) => {
     </AuthContext.Provider>
   );
 };
-
-export const useAuth = () => useContext(AuthContext);

@@ -1,4 +1,4 @@
-import { useHotel } from "../../contexts/HotelContext";
+import { useHotel } from "../../contexts";
 import { StyledHotelInfo } from "./style";
 
 const HotelInfo = () => {

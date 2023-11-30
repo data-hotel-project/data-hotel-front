@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { IGuestContext } from "./@types";
 import { api } from "../../server/Api";
 import { toast } from "react-toastify";
@@ -8,17 +8,15 @@ import {
   TGuestLoginData,
   TGuestUpdateFormData,
 } from "../../validators/guestValidators";
-import { AuthContext, useAuth } from "../AuthContext";
+import { useAuth } from "..";
 
 export const GuestContext = createContext<IGuestContext>({} as IGuestContext);
 
 export const GuestProvider = ({ children }: IChildrenProps) => {
-  const { setUser, getLoggedUser } = useAuth();
+  const { token, userId, navigate, setUser, getLoggedUser } = useAuth();
 
   const [guest, setGuest] = useState<iGuest | null>(null);
   const [guests, setGuests] = useState<iGuest[] | null>(null);
-
-  const { token, userId, navigate } = useContext(AuthContext);
 
   const loginGuest = async (formData: TGuestLoginData) => {
     try {
@@ -111,5 +109,3 @@ export const GuestProvider = ({ children }: IChildrenProps) => {
     </GuestContext.Provider>
   );
 };
-
-export const useGuest = () => useContext(GuestContext);

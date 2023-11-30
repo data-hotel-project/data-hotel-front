@@ -7,11 +7,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { employeeSchemaLogin } from "../../validators/employeeValidators";
 import { StyledBody } from "./style";
 import Background from "../../components/Background";
-import { useEmployee } from "../../contexts/EmployeeContext";
+import { useEmployee } from "../../contexts";
 
 const EmployeeLogin = () => {
-  const {loginEmployee} = useEmployee()
-
+  const { loginEmployee } = useEmployee();
 
   const {
     register,
@@ -30,7 +29,7 @@ const EmployeeLogin = () => {
     <Background>
       <StyledBody>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="name">DATA HOTEL</h1>
+          <h1 className="name">DATA HOTEL</h1>
           <div className="box">
             <h1>Login</h1>
             <Input
@@ -55,7 +54,9 @@ const EmployeeLogin = () => {
               <a href="/register">Still don't have account?</a>
             </div>
 
-            <Button size={"medium"} backgroundColor={"black"}>Login</Button>
+            <Button size={"medium"} backgroundColor={"black"}>
+              Login
+            </Button>
           </div>
         </form>
       </StyledBody>

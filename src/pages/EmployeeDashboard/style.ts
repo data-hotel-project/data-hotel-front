@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -12,6 +14,24 @@ export const Container = styled.div`
   border: 1px solid var(--secondary-normal);
 `;
 
+export const BoxAdd = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    color: green;
+
+    &:hover {
+      filter: brightness("120%");
+    }
+  }
+`;
+
 export const UlContainer = styled.ul`
   display: flex;
   align-items: flex-start;
@@ -21,6 +41,7 @@ export const UlContainer = styled.ul`
 
   height: 87%;
   width: 97%;
+  padding-bottom: 1rem;
 
   overflow-y: scroll;
 `;

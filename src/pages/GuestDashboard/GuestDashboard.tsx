@@ -1,19 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { StyledHeader } from "../../components/Header/style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import {
-  StyledBox,
-  StyledContainer,
-  StyledDashboard,
-  StyledDashboardH2,
-  StyledSubtitles,
-} from "./style";
+import { StyledDashboard, StyledDashboardH2 } from "./style";
 import { MenuContainer, ToggleButton } from "../Home/style";
 import Button from "../../components/button";
 import { StyledNoisy } from "../../components/Background/style";
-import { useAuth } from "../../contexts";
 
 export const GuestDashboard: React.FC = () => {
   const { userLogout, user } = useAuth();
@@ -45,32 +37,32 @@ export const GuestDashboard: React.FC = () => {
       <StyledDashboardH2>GUEST DASHBOARD</StyledDashboardH2>
       {/* <StyledDashboardH2>RESERVATION</StyledDashboardH2> */}
       {/* <StyledContainer>
-        <StyledBox>
-          <StyledSubtitles>
-            <p>Room Category</p>
-          </StyledSubtitles>
-        </StyledBox>
-        <StyledBox>
-          <StyledSubtitles>
-            <p>Your Choices</p>
-          </StyledSubtitles>
-        </StyledBox>
-        <StyledBox>
-          <StyledSubtitles>
-            <p>Current Price</p>
-          </StyledSubtitles>
-        </StyledBox>
-        <StyledBox>
-          <StyledSubtitles>
-            <p>Clients</p>
-          </StyledSubtitles>
-        </StyledBox>
-        <StyledBox>
-          <StyledSubtitles>
-            <p>Available Rooms</p>
-          </StyledSubtitles>
-        </StyledBox>
-      </StyledContainer> */}
+              <StyledBox>
+                <StyledSubtitles>
+                  <p>Room Category</p>
+                </StyledSubtitles>
+              </StyledBox>
+              <StyledBox>
+                <StyledSubtitles>
+                  <p>Your Choices</p>
+                </StyledSubtitles>
+              </StyledBox>
+              <StyledBox>
+                <StyledSubtitles>
+                  <p>Current Price</p>
+                </StyledSubtitles>
+              </StyledBox>
+              <StyledBox>
+                <StyledSubtitles>
+                  <p>Clients</p>
+                </StyledSubtitles>
+              </StyledBox>
+              <StyledBox>
+                <StyledSubtitles>
+                  <p>Available Rooms</p>
+                </StyledSubtitles>
+              </StyledBox>
+            </StyledContainer> */}
     </StyledDashboard>
   );
 };
