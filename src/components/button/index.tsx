@@ -24,13 +24,13 @@ const Button = ({
 }: iButtonProps) => {
   return (
     <StyledButton
-      backgroundcolor={backgroundColor}
+      $backgroundColor={backgroundColor}
       size={size}
-      fontColor={fontColor}
-      borderColor={borderColor}
-      backgroundColorHover={backgroundColorHover}
-      borderColorHover={borderColorHover}
-      fontColorHover={fontColorHover}
+      $fontColor={fontColor}
+      $borderColor={borderColor}
+      $backgroundColorHover={backgroundColorHover}
+      $borderColorHover={borderColorHover}
+      $fontColorHover={fontColorHover}
       {...rest}
     >
       {children}

@@ -23,11 +23,6 @@ export const StyledBody = styled.div`
       color: var(--primary-light);
     }
 
-    input {
-      border-color: var(--secondary-normal);
-      background-color: transparent;
-    }
-
     input::placeholder {
     }
 

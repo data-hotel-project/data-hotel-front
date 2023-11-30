@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 interface iInputGroup {
   className: String;
-  inputvalue: string;
+  $inputValue: string;
 }
 const InputGroup = styled.div<iInputGroup>`
   position: relative;
@@ -9,26 +9,22 @@ const InputGroup = styled.div<iInputGroup>`
 
   input {
     width: 100%;
-    border: 1px solid
-      ${(props) =>
-        props.className === "error"
-          ? "#E2142D"
-          : props.className === "sucess"
-          ? "#4BAD31"
-          : props.className === "done"
-          ? "#1DA1F2"
-          : "#14171A"};
+    padding: 16.5px 14px;
+
+    border: 1px solid var(--secondary-normal);
+    background-color: transparent;
     border-radius: 8px;
-    background: none;
-    color: ${(props) =>
-      props.className === "sucess"
+    font-size: 16px;
+
+    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    ${({ className }) => css`
+      color: ${className === "sucess"
         ? "#FFF"
-        : props.className === "done"
+        : className === "done"
         ? "#1DA1F2"
         : "#14171A"};
-    padding: 16.5px 14px;
-    font-size: 16px;
-    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    `}
   }
 
   label {
@@ -36,22 +32,24 @@ const InputGroup = styled.div<iInputGroup>`
     left: 16px;
     top: 0px;
     pointer-events: none;
-    color: ${(props) =>
-      props.className === "error"
-        ? "#E2142D"
-        : props.className === "sucess"
-        ? "#5ea74a"
-        : props.className === "done"
-        ? "#1DA1F2"
-        : "#dcdcdc"};
-    transform: ${(props) =>
-      props.inputvalue === ""
+    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    ${({ $inputValue, className }) => css`
+      transform: ${$inputValue === ""
         ? "translateY(1rem)"
         : " translateY(-50%) scale(0.8)"};
-    background-color: ${(props) =>
-      props.inputvalue === "" ? "transparent" : "var(--primary-normal)"};
-    padding: ${(props) => (props.inputvalue !== "" ? "0 0.2em" : 0)};
-    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: ${$inputValue === ""
+        ? "transparent"
+        : "var(--primary-normal)"};
+      padding: ${$inputValue !== "" ? "0 0.2em" : 0};
+      color: ${className === "error"
+        ? "#E2142D"
+        : className === "sucess"
+        ? "#5ea74a"
+        : className === "done"
+        ? "#1DA1F2"
+        : "#dcdcdc"};
+    `};
   }
 
   input:focus {
@@ -74,16 +72,6 @@ const InputGroup = styled.div<iInputGroup>`
     padding: 5px;
     display: flex;
     align-items: center;
-
-    /* :hover {
-      background-color: rgba(101, 119, 134, 0.1);
-      transition: all 0.2s;
-    }
-
-    :active {
-      background-color: rgba(101, 119, 134, 0.3);
-      transition: all 0.2s;
-    } */
   }
 `;
 export default InputGroup;
