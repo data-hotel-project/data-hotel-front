@@ -1,35 +1,36 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { IHotelContext } from "./@types";
-import { api } from "../../server/Api";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { IChildrenProps, iHotel, iReservation, iRoom } from "../../interface";
+import { api } from "../../server/Api";
 import {
   THotelCreateFormData,
   THotelUpdateFormData,
 } from "../../validators/hotelValidators";
 import {
-  TRoomCreateData,
-  TRoomUpdateData,
-} from "../../validators/roomValidators";
-import {
   TReservationCreateData,
   TReservationUpdateData,
 } from "../../validators/reservationValidators";
-import { AuthContext } from "../AuthContext";
+import {
+  TRoomCreateData,
+  TRoomUpdateData,
+} from "../../validators/roomValidators";
+import { IHotelContext } from "./@types";
+import { useAuth } from "..";
 
 export const HotelContext = createContext<IHotelContext>({} as IHotelContext);
 
 export const HotelProvider = ({ children }: IChildrenProps) => {
   const [hotel, setHotel] = useState<iHotel | null>(null);
-  const [hotels, setHotels] = useState<iHotel[] | null>(null);
+  const [hotels, setHotels] = useState<iHotel[] | []>([]);
 
   const [room, setRoom] = useState<iRoom | null>(null);
-  const [rooms, setRooms] = useState<iRoom[] | null>(null);
+  const [rooms, setRooms] = useState<iRoom[] | []>([]);
+  const [allRooms, setAllRooms] = useState<iRoom[] | []>([]);
 
   const [reservation, setReservation] = useState<iReservation | null>(null);
-  const [reservations, setReservations] = useState<iReservation[] | null>(null);
+  const [reservations, setReservations] = useState<iReservation[] | []>([]);
 
-  const { token, userId, hotelId, navigate } = useContext(AuthContext);
+  const { token, userId, hotelId, navigate } = useAuth();
 
   const createHotel = async (formData: THotelCreateFormData) => {
     try {
@@ -98,6 +99,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   useEffect(() => {
     listHotels();
+    retrieveHotel();
   }, [token]);
 
   // ---------------------ROOM-------------------------
@@ -116,9 +118,18 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
     }
   };
 
-  const listRooms = async () => {
+  const listAllRooms = async () => {
     try {
       const response = await api.get("/room/");
+      setAllRooms(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const listRoomsByHotel = async (hotelId: string | null) => {
+    try {
+      const response = await api.get(`/room/?hotel_id=${hotelId}`);
       setRooms(response.data);
     } catch (error) {
       console.log(error);
@@ -242,6 +253,8 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
         setRoom,
         rooms,
         setRooms,
+        allRooms,
+        setAllRooms,
         reservation,
         setReservation,
         reservations,
@@ -252,7 +265,8 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
         updateHotel,
         deleteHotel,
         createRoom,
-        listRooms,
+        listAllRooms,
+        listRoomsByHotel,
         retrieveRoom,
         updateRoom,
         deleteRoom,
@@ -267,5 +281,3 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
     </HotelContext.Provider>
   );
 };
-
-export const useHotel = () => useContext(HotelContext);

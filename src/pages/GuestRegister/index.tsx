@@ -1,14 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import Background from "../../components/Background";
 import Input from "../../components/Input";
 import Button from "../../components/button";
-import { useGuest } from "../../contexts/GuestContext";
+import { useGuest } from "../../contexts";
 import {
   TGuestFormData,
   guestSchemaForm,
 } from "../../validators/guestValidators";
 import { StyledBody } from "./style";
-import Background from "../../components/Background";
 
 const GuestRegister = () => {
   const { createGuest } = useGuest();

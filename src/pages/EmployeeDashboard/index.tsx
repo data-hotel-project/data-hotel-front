@@ -1,21 +1,29 @@
-import { useState } from "react";
-import { StyledHeader } from "../../components/Header/style";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import { StyledNoisy } from "../../components/Background/style";
+import { StyledHeader } from "../../components/Header/style";
+import Button from "../../components/button";
 import { StyledDashboard } from "../GuestDashboard/style";
 import { MenuContainer, ToggleButton } from "../Home/style";
-import Button from "../../components/button";
-import { StyledNoisy } from "../../components/Background/style";
-import { UlContainer, Container, LiContainer } from "./style";
-import { useAuth } from "../../contexts/AuthContext";
+import { BoxAdd, Container, LiContainer, UlContainer } from "./style";
+
+import { faSquarePlus } from "@fortawesome/free-regular-svg-icons";
+import { useAuth, useHotel } from "../../contexts";
 
 export const EmployeeDashboard = () => {
-  const { userLogout } = useAuth();
+  const { hotelId, userLogout } = useAuth();
+  const { listRoomsByHotel, rooms } = useHotel();
 
   const [menuOpen, setMenuOpen] = useState(false);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  useEffect(() => {
+    listRoomsByHotel(hotelId);
+  }, []);
 
   return (
     <StyledDashboard>
@@ -36,7 +44,19 @@ export const EmployeeDashboard = () => {
       </StyledHeader>
 
       <Container>
+        <BoxAdd>
+          <FontAwesomeIcon icon={faSquarePlus} size="2x" />
+        </BoxAdd>
+
         <UlContainer>
+          {rooms.map((room) => {
+            return (
+              <LiContainer key={room.id}>
+                <h2>{room?.status}</h2>
+              </LiContainer>
+            );
+          })}
+          {/* <LiContainer></LiContainer>
           <LiContainer></LiContainer>
           <LiContainer></LiContainer>
           <LiContainer></LiContainer>
@@ -46,9 +66,7 @@ export const EmployeeDashboard = () => {
           <LiContainer></LiContainer>
           <LiContainer></LiContainer>
           <LiContainer></LiContainer>
-          <LiContainer></LiContainer>
-          <LiContainer></LiContainer>
-          <LiContainer></LiContainer>
+          <LiContainer></LiContainer> */}
         </UlContainer>
       </Container>
     </StyledDashboard>

@@ -13,9 +13,8 @@ import {
 import { MenuContainer, StyledUL, ToggleButton } from "../Home/style";
 import Button from "../../components/button";
 import { StyledNoisy } from "../../components/Background/style";
-import { useAuth } from "../../contexts/AuthContext";
-import { useHotel } from "../../contexts/HotelContext";
 import { HotelCard } from "../../components/Cards/HotelCard";
+import { useAuth, useHotel } from "../../contexts";
 
 export const AdminDashboard = () => {
   const { userLogout, user } = useAuth();

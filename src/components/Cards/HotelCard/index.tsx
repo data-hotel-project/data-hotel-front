@@ -1,5 +1,4 @@
-import { useAuth } from "../../../contexts/AuthContext";
-import { useHotel } from "../../../contexts/HotelContext";
+import { useAuth, useHotel } from "../../../contexts";
 import { iHotel } from "../../../interface";
 import { StyledHotelCard } from "./style";
 
@@ -9,12 +8,12 @@ interface CardProps {
 
 export const HotelCard = ({ hotel }: CardProps) => {
   const { setShowModal, user } = useAuth();
-  const { deleteHotel,setHotel } = useHotel();
+  const { deleteHotel, setHotel } = useHotel();
 
   const handleClick = () => {
-    setShowModal(hotel.id)
-    setHotel(hotel)
-  }
+    setShowModal(hotel.id);
+    setHotel(hotel);
+  };
 
   return (
     <>
