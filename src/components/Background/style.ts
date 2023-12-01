@@ -12,6 +12,11 @@ export const StyledBackground = styled.div`
   display: flex;
   justify-content: center;
   overflow-y: auto;
+  margin: 0 auto;
+
+  @media (min-width: 1200px) {
+    width: 1200px;
+  }
 `;
 
 export const StyledShadow = styled.div`

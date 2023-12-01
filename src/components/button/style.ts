@@ -9,13 +9,13 @@ export const StyledButton = styled.button<iButtonStyledProps>`
   transition: background-color 0.2s;
 
   ${({ $backgroundColor, $fontColor, size, $borderColor }) => css`
-    background-color: ${$backgroundColor ||
-    "var(--primary-normal)"}; // ajustar valor default
+    background-color: ${$backgroundColor || "var(--primary-dark-active)"};
     color: ${$fontColor || "var(--primary-light)"};
-    font-size: ${size === "big" ? "16px" : "14px"};
-    padding: ${size === "big" ? "12px" : "8px 20px"};
+    font-size: ${size === "big" ? "16px" : size === "medium" ? "14px" : "10px"};
+    height: ${size === "big" ? "40px" : size === "medium" ? "35px" : "20px"};
+    width: ${size === "big" ? "70px" : size === "medium" ? "85px" : "50px"};
+    padding: ${size === "big" ? "7px" : size === "medium" ? "5px" : "3px"};
     border: 1.5px solid ${$borderColor || "var(--secondary-normal)"};
-    padding: ${size === "big" ? "12px" : "8px 20px"};
   `}
 
   &:not(:disabled):hover {

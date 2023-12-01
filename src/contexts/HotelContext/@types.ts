@@ -31,7 +31,7 @@ export interface IHotelContext {
   setReservations: React.Dispatch<React.SetStateAction<iReservation[] | []>>;
   createHotel: (formData: THotelCreateFormData) => Promise<void>;
   listHotels: () => Promise<void>;
-  retrieveHotel: () => Promise<void>;
+  retrieveHotel: (hotelId: string | null) => Promise<void>;
   updateHotel: (formData: THotelUpdateFormData) => Promise<void>;
   deleteHotel: (id: string) => Promise<void>;
   createRoom: (formData: TRoomCreateData) => Promise<void>;

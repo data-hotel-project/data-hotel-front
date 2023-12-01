@@ -173,12 +173,7 @@ const GuestRegister = () => {
                 <a href="/login">Already have account?</a>
                 <a href="/">Back</a>
               </div>
-              <Button
-                size={"medium"}
-                backgroundColor={"transparent"}
-                fontColorHover="var(--secondary-normal-hover)"
-                backgroundColorHover="var(--primary-dark-hover)"
-              >
+              <Button size={"medium"} backgroundColor={"black"}>
                 Register
               </Button>
             </div>

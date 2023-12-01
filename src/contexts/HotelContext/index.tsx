@@ -59,7 +59,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
     }
   };
 
-  const retrieveHotel = async () => {
+  const retrieveHotel = async (hotelId: string | null) => {
     try {
       const response = await api.get(`/hotel/${hotelId}`);
       setHotel(response.data);
@@ -99,7 +99,10 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
 
   useEffect(() => {
     listHotels();
-    retrieveHotel();
+
+    if (hotelId) {
+      retrieveHotel(hotelId);
+    }
   }, [token]);
 
   // ---------------------ROOM-------------------------

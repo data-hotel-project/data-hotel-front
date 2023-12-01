@@ -18,7 +18,7 @@ export const Home = () => {
           <HotelInfo />
         </Modal>
       ) : null}
-      <StyledHeader />
+      {/* <StyledHeader /> */}
       <Background>
         <Header />
         <StyledH2>GRAND DATA HOTEL</StyledH2>
