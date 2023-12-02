@@ -1,6 +1,5 @@
 import Header from "../../components/Header";
 import { StyledH2, StyledUL } from "./style";
-import { StyledHeader } from "../../components/Header/style";
 import Background from "../../components/Background";
 import { HotelCard } from "../../components/Cards/HotelCard";
 import { Modal } from "../../components/Modal";
@@ -18,7 +17,6 @@ export const Home = () => {
           <HotelInfo />
         </Modal>
       ) : null}
-      {/* <StyledHeader /> */}
       <Background>
         <Header />
         <StyledH2>GRAND DATA HOTEL</StyledH2>

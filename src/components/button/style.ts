@@ -28,7 +28,7 @@ export const StyledButton = styled.button<iButtonStyledProps>`
       $borderColorHover,
     }) => css`
       background-color: ${$backgroundColorHover || $backgroundColor};
-      border: ${$borderColorHover || $borderColor};
+      border: 1px solid ${$borderColorHover || $borderColor};
       color: ${$fontColorHover || $fontColor};
 
       filter: ${!$borderColorHover &&

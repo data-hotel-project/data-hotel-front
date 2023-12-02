@@ -1,59 +1,67 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { StyledHeader } from "./style";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { MenuContainer, ToggleButton } from "../../pages/Home/style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts";
 import Button from "../button";
-{
-  /* <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><style>svg{fill:#ffffff}</style><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg> */
+import { MenuContainer, StyledHeader, ToggleButton } from "./style";
+
+interface iHeaderProps {
+  isLogout?: boolean;
 }
 
-const Header: React.FC = () => {
+const Header = ({ isLogout }: iHeaderProps) => {
+  const { userLogout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
   return (
     <StyledHeader>
-      {/* <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><style>svg{fill:#ffffff}</style><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg> */}
-      {/* <h2>Menu</h2> */}
       <ToggleButton onClick={toggleMenu}>
         <FontAwesomeIcon
           icon={faBars}
           style={{ color: "var(--primary-light)" }}
         />
-        {/* {menuOpen?'Close Menu':'Open Menu'} */}
       </ToggleButton>
       <MenuContainer open={menuOpen}>
-        <Link to={"/login"}>
-          <Button
-            size="medium"
-            fontColorHover="var(--secondary-normal-hover)"
-            backgroundColorHover="var(--primary-dark-hover)"
-          >
-            Login
+        {!isLogout ? (
+          <>
+            <Link to={"/login"}>
+              <Button
+                size="medium"
+                fontColorHover="var(--secondary-normal-hover)"
+                backgroundColorHover="var(--primary-dark-hover)"
+              >
+                Login
+              </Button>
+            </Link>
+            <Link to={"/register"}>
+              <Button
+                size="medium"
+                fontColorHover="var(--secondary-normal-hover)"
+                backgroundColorHover="var(--primary-dark-hover)"
+              >
+                Register
+              </Button>
+            </Link>
+            <Link to={"/hotels"}>
+              <Button
+                size="medium"
+                fontColorHover="var(--secondary-normal-hover)"
+                backgroundColorHover="var(--primary-dark-hover)"
+              >
+                Hotels
+              </Button>
+            </Link>
+          </>
+        ) : (
+          <Button size="medium" onClick={() => userLogout()}>
+            Logout
           </Button>
-        </Link>
-        <Link to={"/register"}>
-          <Button
-            size="medium"
-            fontColorHover="var(--secondary-normal-hover)"
-            backgroundColorHover="var(--primary-dark-hover)"
-          >
-            Register
-          </Button>
-        </Link>
-        <Link to={"/hotels"}>
-          <Button
-            size="medium"
-            fontColorHover="var(--secondary-normal-hover)"
-            backgroundColorHover="var(--primary-dark-hover)"
-          >
-            Hotels
-          </Button>
-        </Link>
+        )}
       </MenuContainer>
       <h3>DATA HOTEL</h3>
     </StyledHeader>
