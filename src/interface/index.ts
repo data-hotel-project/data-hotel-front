@@ -27,7 +27,7 @@ export interface iInputProps {
 
 export interface iButtonStyledProps {
   $backgroundColor?: string;
-  size: "big" | "medium";
+  size: "big" | "medium" | "small";
   $fontColor?: string;
   $borderColor?: string;
   $backgroundColorHover?: string;

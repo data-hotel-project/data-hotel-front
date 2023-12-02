@@ -4,7 +4,7 @@ import { StyledButton } from "./style";
 interface iButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   backgroundColor?: string;
   fontColor?: string;
-  size: "big" | "medium";
+  size: "big" | "medium" | "small";
   borderColor?: string;
   backgroundColorHover?: string;
   borderColorHover?: string;

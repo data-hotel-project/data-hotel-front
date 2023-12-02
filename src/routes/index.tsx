@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "../pages/Home/Home";
+import { Home } from "../pages/Home";
 import Login from "../pages/GuestLogin";
-import { GuestDashboard } from "../pages/GuestDashboard/GuestDashboard";
+import { GuestDashboard } from "../pages/GuestDashboard";
 import { EmployeeDashboard } from "../pages/EmployeeDashboard";
 import { AdminDashboard } from "../pages/AdminDashboard";
 import GuestRegister from "../pages/GuestRegister";
