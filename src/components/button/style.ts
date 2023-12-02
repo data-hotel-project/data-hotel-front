@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { iButtonStyledProps } from "../../interface";
 
 export const StyledButton = styled.button<iButtonStyledProps>`
-  font-family: var(--font-family-3); // ajustar
+  font-family: var(--font-family-3); // ajustarr
   font-weight: 600;
   border-radius: 4px;
   text-decoration: none;
@@ -28,7 +28,7 @@ export const StyledButton = styled.button<iButtonStyledProps>`
       $borderColorHover,
     }) => css`
       background-color: ${$backgroundColorHover || $backgroundColor};
-      border: ${$borderColorHover || $borderColor};
+      border: 1px solid ${$borderColorHover || $borderColor};
       color: ${$fontColorHover || $fontColor};
 
       filter: ${!$borderColorHover &&
