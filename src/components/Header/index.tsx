@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts";
-import Button from "../button";
+import Button from "../Button";
 import { MenuContainer, StyledHeader, ToggleButton } from "./style";
 
 interface iHeaderProps {

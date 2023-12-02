@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Background from "../../components/Background";
 import Input from "../../components/Input";
-import Button from "../../components/button";
+import Button from "../../components/Button";
 import { useEmployee, useGuest } from "../../contexts";
 import { iLoginRequest } from "../../interface";
 import { guestSchemaLogin } from "../../validators/guestValidators";

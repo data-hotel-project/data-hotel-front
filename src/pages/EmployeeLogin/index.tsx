@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { iLoginRequest } from "../../interface";
 import Input from "../../components/Input";
-import Button from "../../components/button";
+import Button from "../../components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { employeeSchemaLogin } from "../../validators/employeeValidators";

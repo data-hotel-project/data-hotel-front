@@ -1,7 +1,7 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { iRoom } from "../../../interface";
-import Button from "../../button";
+import Button from "../../Button";
 import {
   BoxButtons,
   BoxImage,
