@@ -27,7 +27,7 @@ export const RoomCard = ({ room }: iRoomCardProps) => {
       </SubTitle>
       <SubTitle>
         Status:
-        <SpanStatus status={room?.status}>{room?.status}</SpanStatus>
+        <SpanStatus $status={room?.status}>{room?.status}</SpanStatus>
       </SubTitle>
       <BoxPersons>
         {Array.from({ length: room.quantity }, (_, i) => (
@@ -38,9 +38,7 @@ export const RoomCard = ({ room }: iRoomCardProps) => {
         <Button size="small" borderColor="#bdbd23d6">
           Edit
         </Button>
-        <Button size="small" borderColor="#a53333">
-          Delete
-        </Button>
+        <Button size="small">View more</Button>
       </BoxButtons>
     </StyledRoomCard>
   );

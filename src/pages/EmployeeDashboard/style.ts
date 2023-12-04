@@ -1,5 +1,42 @@
 import styled from "styled-components";
 
+export const BoxChoice = styled.div<{ $roomActive: boolean }>`
+  z-index: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 90%;
+  height: 30px;
+
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-top: 8rem;
+
+  div {
+    display: flex;
+    gap: 3px;
+
+    h3 {
+      border-bottom: 2px solid
+        ${({ $roomActive }) => (!$roomActive ? "white" : "#858585")};
+      color: ${({ $roomActive }) => (!$roomActive ? "white" : "#858585")};
+      border-radius: 1px;
+      padding-bottom: 5px;
+      width: 70px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    :last-child {
+      color: ${({ $roomActive }) => ($roomActive ? "white" : "#858585")};
+      border-bottom: 2px solid
+        ${({ $roomActive }) => ($roomActive ? "white" : "#858585")};
+    }
+  }
+`;
+
 export const Container = styled.div`
   position: relative;
 
@@ -12,8 +49,9 @@ export const Container = styled.div`
 
   padding-left: 7px;
   padding-right: 7px;
-  margin-top: 10rem;
+  margin-top: 5px;
   border: 1px solid var(--secondary-normal);
+  border-radius: 3px;
 `;
 
 export const BoxAdd = styled.div`
@@ -70,14 +108,15 @@ export const UlContainer = styled.ul`
   @media (min-width: 625px) and (max-width: 699px),
     (min-width: 820px) and (max-width: 899px),
     (min-width: 1030px) and (max-width: 1069px),
-    (min-width: 1200px) and (max-width: 1279px) {
+    (min-width: 1200px) and (max-width: 1279px),
+    (min-width: 1380px) {
     padding-left: 30px;
   }
 
   @media (min-width: 700px) and (max-width: 758px),
     (min-width: 900px) and (max-width: 943px),
     (min-width: 1070px) and (max-width: 1135px),
-    (min-width: 1280px) {
+    (min-width: 1280px) and (max-width: 1330px) {
     padding-left: 50px;
   }
 `;

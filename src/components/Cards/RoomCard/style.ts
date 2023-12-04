@@ -43,16 +43,16 @@ export const Span = styled.span`
   color: #bfbfbf;
 `;
 
-export const SpanStatus = styled.span<{ status: string }>`
+export const SpanStatus = styled.span<{ $status: string }>`
   font-size: 10px;
-  color: ${({ status }) =>
-    status === "Free"
+  color: ${({ $status }) =>
+    $status === "Free"
       ? "green"
-      : status === "Occupied"
+      : $status === "Occupied"
       ? "red"
-      : status === "Under maintenance"
+      : $status === "Under maintenance"
       ? "yellow"
-      : status === "Cleaning" && "blue"};
+      : $status === "Cleaning" && "blue"};
 `;
 
 export const BoxPersons = styled.div`
@@ -75,4 +75,9 @@ export const BoxButtons = styled.div`
 
   margin-top: 4px;
   padding-left: 4px;
+
+  :last-child {
+    padding: 0;
+    font-size: 8px;
+  }
 `;

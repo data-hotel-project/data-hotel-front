@@ -23,6 +23,10 @@ const GlobalStyle = createGlobalStyle`
         --secondary-dark-hover: #854B1A;
         --secondary-dark-active: #633813;
 
+        --btn-add: #24FF0070;
+        --btn-edit: #bdbd23d6;
+        --btn-delete: #a53333;
+
         --alert-1: #CD2B31;
         --alert-2: #FDD8D8;
         --sucess-1: #18794E;
