@@ -25,7 +25,7 @@ export const guestSchemaForm = z
     contact: z
       .string()
       .refine((value) => value.trim() !== "", "Contact is required"),
-    contact_aditional: z.string(),
+    aditional_contact: z.string(),
     emergency_num: z
       .string()
       .refine((value) => value.trim() !== "", "Emergency contact is required"),
@@ -47,7 +47,7 @@ export const guestSchemaUpdateForm = z.object({
   password: z.string(),
   contact: z.string(),
   emergency_num: z.string(),
-  contact_aditional: z.string(),
+  aditional_contact: z.string(),
   address: addressSchemaUpdateForm,
 });
 

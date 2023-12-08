@@ -64,7 +64,7 @@ export interface iEmployee {
   birthdate: string;
   nationality: string;
   contact: string;
-  contact_aditional?: string;
+  aditional_contact?: string;
   emergency_num: string;
   job_function: string;
   admission_date: string;
@@ -82,7 +82,7 @@ export interface iGuest {
   birthdate: string;
   nationality: string;
   contact: string;
-  contact_aditional?: string;
+  aditional_contact?: string;
   emergency_num: string;
   address: iAddress;
   is_staff: boolean;
