@@ -108,9 +108,9 @@ const GuestRegister = () => {
                     <Input
                       label="Aditional contact"
                       type="text"
-                      errorMessage={errors.contact_aditional?.message}
+                      errorMessage={errors.aditional_contact?.message}
                       register={register}
-                      id="contact_aditional"
+                      id="aditional_contact"
                       getValues={getValues}
                     />
                   </div>

@@ -16,8 +16,8 @@ export const StyledBackground = styled.div`
   overflow-y: auto;
   margin: 0 auto;
 
-  @media (min-width: 1300px) {
-    width: 1300px;
+  @media (min-width: 1400px) {
+    width: 1400px;
   }
 `;
 

@@ -11,8 +11,8 @@ export const StyledDashboard = styled.div`
   background-color: var(--primary-normal);
   margin: 0 auto;
 
-  @media (min-width: 1300px) {
-    width: 1300px;
+  @media (min-width: 1400px) {
+    width: 1400px;
   }
 `;
 

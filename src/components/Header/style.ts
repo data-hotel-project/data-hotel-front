@@ -36,8 +36,8 @@ export const StyledHeader = styled.header`
   padding: 0 20px 0 20px;
   background-color: var(--primary-normal);
 
-  @media (min-width: 1300px) {
-    width: 1300px;
+  @media (min-width: 1400px) {
+    width: 1400px;
   }
 `;
 
