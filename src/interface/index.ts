@@ -22,7 +22,8 @@ export interface iInputProps {
   register: UseFormRegister<any>;
   type: string;
   showPass?: boolean;
-  defaultValue?: string;
+  defaultValue?: string | number;
+  isTypeNumber?: boolean;
 }
 
 export interface iButtonStyledProps {

@@ -1,8 +1,12 @@
 import styled, { css } from "styled-components";
 interface iInputGroup {
-  className: String;
+  className: string;
   $inputValue: string | number;
+  $labelbackground: string | null | undefined;
+  $labelcolor: string | null | undefined;
+  $inputcolor: string | null | undefined;
 }
+
 const InputGroup = styled.div<iInputGroup>`
   position: relative;
   width: 100%;
@@ -18,13 +22,22 @@ const InputGroup = styled.div<iInputGroup>`
 
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    ${({ className }) => css`
-      color: ${className === "sucess"
-        ? "#FFF"
+    ${({ className, $inputcolor }) => css`
+      color: ${className === "success"
+        ? $inputcolor || "#FFF"
         : className === "done"
         ? "#1DA1F2"
         : "#14171A"};
     `}
+
+    &[type="number"] {
+      appearance: textfield;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+      }
+    }
   }
 
   label {
@@ -34,27 +47,24 @@ const InputGroup = styled.div<iInputGroup>`
     pointer-events: none;
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    ${({ $inputValue, className }) => css`
-      transform: ${(typeof $inputValue === "string" && $inputValue === "") ||
-      (typeof $inputValue === "number" && $inputValue === 0)
+    ${({ $inputValue, className, $labelbackground, $labelcolor }) => css`
+      transform: ${typeof $inputValue === "string" && $inputValue === ""
         ? "translateY(1rem)"
         : " translateY(-50%) scale(0.8)"};
-      background-color: ${(typeof $inputValue === "string" &&
-        $inputValue === "") ||
-      (typeof $inputValue === "number" && $inputValue === 0)
+      background-color: ${typeof $inputValue === "string" && $inputValue === ""
         ? "transparent"
-        : "var(--primary-normal)"};
+        : $labelbackground || "var(--primary-normal)"};
       padding: ${(typeof $inputValue === "string" && $inputValue !== "") ||
-      (typeof $inputValue === "number" && $inputValue !== 0)
+      typeof $inputValue === "number"
         ? "0 0.2em"
         : 0};
       color: ${className === "error"
         ? "#E2142D"
-        : className === "sucess"
+        : className === "success"
         ? "#5ea74a"
         : className === "done"
         ? "#1DA1F2"
-        : "#dcdcdc"};
+        : $labelcolor || "#dcdcdc"};
     `};
   }
 
@@ -64,7 +74,8 @@ const InputGroup = styled.div<iInputGroup>`
 
   input:focus ~ label {
     transform: translateY(-50%) scale(0.8);
-    background-color: var(--primary-normal);
+    background-color: ${({ $labelbackground }) =>
+      $labelbackground ? $labelbackground : "var(--primary-normal)"};
     padding: 0 0.2em;
   }
 

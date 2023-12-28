@@ -11,13 +11,15 @@ import Header from "../../components/Header";
 import Input from "../../components/Input";
 import { Modal } from "../../components/Modal";
 import { useAuth, useHotel } from "../../contexts";
-import { iUpdateRoom } from "../../interface";
+import { iRoom, iUpdateRoom } from "../../interface";
 import { roomSchemaUpdateForm } from "../../validators/roomValidators";
+import UpdateRoomForm from "../../components/Forms/UpdateRoomForm";
 
 export const EmployeeDashboard = () => {
-  const { hotelId } = useAuth();
+  const { hotelId, showModal, setShowModal } = useAuth();
   const { listRoomsByHotel, rooms } = useHotel();
 
+  const [currentRoom, setCurrentRoom] = useState<iRoom>({} as iRoom);
   const [roomActive, setRoomActive] = useState<boolean>(true);
 
   useEffect(() => {
@@ -63,7 +65,14 @@ export const EmployeeDashboard = () => {
 
           <UlContainer>
             {rooms.map((room) => {
-              return <RoomCard key={room.id} room={room} />;
+              return (
+                <RoomCard
+                  key={room.id}
+                  room={room}
+                  setShowModal={setShowModal}
+                  setCurrentRoom={setCurrentRoom}
+                />
+              );
             })}
 
             {/* {Array.from({ length: 20 }, (_, i) => (
@@ -74,20 +83,11 @@ export const EmployeeDashboard = () => {
       ) : (
         <Container>CLIENTS</Container>
       )}
-      {/* <Modal title="Update Room">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Input
-            id="number"
-            label="Number"
-            type="number"
-            errorMessage={errors.number?.message}
-            register={register}
-            getValues={getValues}
-          />
-
-          <Button size="medium">Save</Button>
-        </form>
-      </Modal> */}
+      {showModal === "updateRoom" && (
+        <Modal title="Update Room">
+          <UpdateRoomForm currentRoom={currentRoom} />
+        </Modal>
+      )}
     </StyledDashboard>
   );
 };
