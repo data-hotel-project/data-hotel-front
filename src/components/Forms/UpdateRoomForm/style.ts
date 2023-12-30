@@ -8,9 +8,16 @@ interface StyledFormProps {
 
 export const StyledForm = styled.form<StyledFormProps>`
   width: 350px;
+  max-height: 80vh;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar-track {
+    border-radius: 1.6rem;
+  }
 
   ${({ $labelbackground, $labelcolor, $inputscolor }) => css`
     --labelbackground: ${$labelbackground};

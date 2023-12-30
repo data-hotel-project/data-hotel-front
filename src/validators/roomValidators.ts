@@ -16,7 +16,12 @@ export const roomSchemaUpdateForm = z.object({
   status: z.string().optional(),
   departure_date: z.string().optional(),
   guest: z.string().optional(),
-  image: z.string().optional(),
+  image: z.unknown().refine(
+    (value) => {
+      return value instanceof FileList;
+    },
+    { message: "Invalid image files" }
+  ),
   image2: z.string().optional(),
   image3: z.string().optional(),
   image4: z.string().optional(),

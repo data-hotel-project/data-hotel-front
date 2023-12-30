@@ -148,9 +148,11 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
     }
   };
 
-  const updateRoom = async (formData: TRoomUpdateData) => {
+  const updateRoom = async (formData: TRoomUpdateData, roomId: string) => {
     try {
-      const response = await api.patch(`/room/${room?.id}`, formData, {
+      console.log(formData, roomId);
+
+      const response = await api.patch(`/room/${roomId}/`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

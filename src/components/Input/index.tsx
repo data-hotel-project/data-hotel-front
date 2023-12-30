@@ -15,11 +15,11 @@ const Input = ({
   type,
   showPass,
   defaultValue,
-  isTypeNumber = false,
   ...rest
 }: iInputProps) => {
   // Destructuring the register
   const { onChange, onBlur, name, ref } = register(id);
+
   const [labelBackground, setLabelBackground] = useState<string | null>();
   const [labelColor, setLabelColor] = useState<string | null>();
   const [inputColor, setInputColor] = useState<string | null>();
@@ -38,7 +38,7 @@ const Input = ({
       setLabelColor(colorLabel);
       setInputColor(colorInput);
     }
-  });
+  }, []);
 
   const inputValue =
     getValues(id) && type !== "number"
@@ -51,6 +51,7 @@ const Input = ({
 
   // States
   const [value, setValue] = useState(defaultValue ? defaultValue : inputValue);
+
   const [show, setShow] = useState(false);
   const [passType, setPassType] = useState("password");
 
@@ -64,7 +65,8 @@ const Input = ({
       ? "error"
       : !errors &&
         ((type === "number" && value !== 0) ||
-          (type !== "number" && value !== ""))
+          (type !== "number" && value !== "") ||
+          typeof inputValue === "object")
       ? "success"
       : "";
 
@@ -102,7 +104,8 @@ const Input = ({
   return (
     <InputGroup
       className={className}
-      $inputValue={value}
+      $inputValue={inputValue}
+      $value={value}
       $labelbackground={labelBackground}
       $labelcolor={labelColor}
       $inputcolor={inputColor}
@@ -111,10 +114,10 @@ const Input = ({
       <input
         autoComplete="off"
         id={id}
-        value={value}
+        value={inputType === "file" ? undefined : value}
         type={inputType}
         onChange={(e) => {
-          if (isTypeNumber) {
+          if (type === "number") {
             setValue(e.target.value.replace(/[^0-9]/g, ""));
           } else {
             setValue(e.target.value);

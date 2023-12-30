@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 interface iInputGroup {
   className: string;
-  $inputValue: string | number;
+  $inputValue: string | number | object;
+  $value: string | number;
   $labelbackground: string | null | undefined;
   $labelcolor: string | null | undefined;
   $inputcolor: string | null | undefined;
@@ -47,15 +48,26 @@ const InputGroup = styled.div<iInputGroup>`
     pointer-events: none;
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    ${({ $inputValue, className, $labelbackground, $labelcolor }) => css`
-      transform: ${typeof $inputValue === "string" && $inputValue === ""
+    ${({
+      $value,
+      className,
+      $labelbackground,
+      $labelcolor,
+      $inputValue,
+    }) => css`
+      transform: ${typeof $value === "string" &&
+      $value === "" &&
+      typeof $inputValue !== "object"
         ? "translateY(1rem)"
         : " translateY(-50%) scale(0.8)"};
-      background-color: ${typeof $inputValue === "string" && $inputValue === ""
+      background-color: ${typeof $value === "string" &&
+      $value === "" &&
+      typeof $inputValue !== "object"
         ? "transparent"
         : $labelbackground || "var(--primary-normal)"};
-      padding: ${(typeof $inputValue === "string" && $inputValue !== "") ||
-      typeof $inputValue === "number"
+      padding: ${(typeof $value === "string" && $value !== "") ||
+      typeof $value === "number" ||
+      typeof $inputValue === "object"
         ? "0 0.2em"
         : 0};
       color: ${className === "error"
@@ -89,6 +101,13 @@ const InputGroup = styled.div<iInputGroup>`
     padding: 5px;
     display: flex;
     align-items: center;
+  }
+
+  .selectedFile {
+    display: flex;
+    color: black;
+    font-size: 12px;
+    padding: 5px 0 0 14px;
   }
 `;
 export default InputGroup;

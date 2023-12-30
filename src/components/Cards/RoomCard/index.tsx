@@ -1,6 +1,6 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
+import React from "react";
 import { iRoom } from "../../../interface";
 import Button from "../../Button";
 import {
@@ -12,7 +12,6 @@ import {
   StyledRoomCard,
   SubTitle,
 } from "./style";
-import { useHotel } from "../../../contexts";
 
 interface iRoomCardProps {
   room: iRoom;

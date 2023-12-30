@@ -38,7 +38,7 @@ export interface IHotelContext {
   listAllRooms: () => Promise<void>;
   listRoomsByHotel: (hotelId: string | null) => Promise<void>;
   retrieveRoom: (roomId: string) => Promise<void>;
-  updateRoom: (formData: TRoomUpdateData) => Promise<void>;
+  updateRoom: (formData: TRoomUpdateData, roomId: string) => Promise<void>;
   deleteRoom: () => Promise<void>;
   createReservation: (formData: TReservationCreateData) => Promise<void>;
   listReservations: () => Promise<void>;

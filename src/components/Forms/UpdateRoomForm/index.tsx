@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useAuth, useHotel } from "../../../contexts";
 import { iRoom } from "../../../interface";
 import {
   TRoomUpdateData,
@@ -10,22 +9,28 @@ import {
 import Button from "../../Button";
 import Input from "../../Input";
 import { BoxButtonAddImage, StyledForm } from "./style";
+import { useAuth, useHotel } from "../../../contexts";
 
 interface iRoomUpdateForm {
   currentRoom: iRoom;
 }
 
 const UpdateRoomForm = ({ currentRoom }: iRoomUpdateForm) => {
+  const [imagesField, setImagesField] = useState<string[]>([""]);
+  const [selectedFile, setSelectedFile] = useState<any>();
+
+  // const getFileName = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const fileName = e.target.files?.[0]?.name;
+
+  //   setSelectedFile(fileName);
+  // };
+
   const { hotelId } = useAuth();
-  const { listRoomsByHotel } = useHotel();
-  const [images, setImages] = useState<string[]>(["", ""]);
+  const { listRoomsByHotel, updateRoom } = useHotel();
 
   useEffect(() => {
-    console.log("Entrouuuu");
     listRoomsByHotel(hotelId);
   }, []);
-
-  // console.log("Saiu", currentRoom);
 
   const {
     register,
@@ -37,7 +42,13 @@ const UpdateRoomForm = ({ currentRoom }: iRoomUpdateForm) => {
   });
 
   const onSubmit = async (data: TRoomUpdateData) => {
-    console.log(data);
+    const filteredData = Object.fromEntries(
+      Object.entries(data).filter(([_, value]) => value !== "")
+    );
+
+    console.log(filteredData);
+
+    updateRoom(filteredData, currentRoom.id);
   };
 
   return (
@@ -46,6 +57,7 @@ const UpdateRoomForm = ({ currentRoom }: iRoomUpdateForm) => {
       $labelbackground={"#aba9a9"}
       $labelcolor={"#000"}
       $inputscolor={"#000"}
+      encType="multipart/form-data"
     >
       <div className="boxInputsOfNumber">
         <Input
@@ -55,7 +67,6 @@ const UpdateRoomForm = ({ currentRoom }: iRoomUpdateForm) => {
           errorMessage={errors.number?.message}
           register={register}
           getValues={getValues}
-          isTypeNumber={true}
           defaultValue={currentRoom.number}
         />
 
@@ -66,7 +77,6 @@ const UpdateRoomForm = ({ currentRoom }: iRoomUpdateForm) => {
           errorMessage={errors.quantity?.message}
           register={register}
           getValues={getValues}
-          isTypeNumber={true}
           defaultValue={currentRoom.quantity}
         />
 
@@ -104,42 +114,45 @@ const UpdateRoomForm = ({ currentRoom }: iRoomUpdateForm) => {
       <Input
         id="image"
         label="Image"
-        type="text"
+        type="file"
         errorMessage={errors.image?.message}
         register={register}
         getValues={getValues}
-        defaultValue={currentRoom.full_url}
+        // onChange={getFileName}
       />
 
-      {images.map((image, i) => {
-        const dynamicFullUrl = `full_url${i + 2}` as keyof iRoom;
+      {imagesField.map((_, i) => {
+        const dynamicErrorImage = `image${i + 2}` as keyof typeof errors;
 
         return (
           <Input
             key={i}
-            id={`ìmage${i + 2}`}
+            id={`image${i + 2}`}
             label={`Image${i + 2}`}
             type="text"
-            errorMessage={errors.image?.message}
+            errorMessage={errors[dynamicErrorImage]?.message}
             register={register}
             getValues={getValues}
-            defaultValue={currentRoom[dynamicFullUrl]}
+            defaultValue={currentRoom[`full_url${i + 2}`]}
           />
         );
       })}
 
-      <BoxButtonAddImage>
-        <Button
-          size="medium"
-          backgroundColor="#698d60"
-          backgroundColorHover="#2f5526"
-          fontColor="#100909"
-          fontColorHover="#d7c6c6"
-          type="button"
-        >
-          Add image field
-        </Button>
-      </BoxButtonAddImage>
+      {imagesField.length < 4 && (
+        <BoxButtonAddImage>
+          <Button
+            size="medium"
+            backgroundColor="#698d60"
+            backgroundColorHover="#2f5526"
+            fontColor="#100909"
+            fontColorHover="#d7c6c6"
+            type="button"
+            onClick={() => setImagesField([...imagesField, ""])}
+          >
+            Add image field
+          </Button>
+        </BoxButtonAddImage>
+      )}
 
       <Button size="medium">Save</Button>
     </StyledForm>
