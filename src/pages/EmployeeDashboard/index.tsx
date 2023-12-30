@@ -3,17 +3,12 @@ import { StyledNoisy } from "../../components/Background/style";
 import { StyledDashboard } from "../GuestDashboard/style";
 import { BoxChoice, Container, UlContainer } from "./style";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import Button from "../../components/Button";
 import { RoomCard } from "../../components/Cards/RoomCard";
+import UpdateRoomForm from "../../components/Forms/UpdateRoomForm";
 import Header from "../../components/Header";
-import Input from "../../components/Input";
 import { Modal } from "../../components/Modal";
 import { useAuth, useHotel } from "../../contexts";
-import { iRoom, iUpdateRoom } from "../../interface";
-import { roomSchemaUpdateForm } from "../../validators/roomValidators";
-import UpdateRoomForm from "../../components/Forms/UpdateRoomForm";
+import { iRoom } from "../../interface";
 
 export const EmployeeDashboard = () => {
   const { hotelId, showModal, setShowModal } = useAuth();
@@ -25,28 +20,6 @@ export const EmployeeDashboard = () => {
   useEffect(() => {
     listRoomsByHotel(hotelId);
   }, []);
-
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    formState: { errors },
-  } = useForm<iUpdateRoom>({
-    resolver: zodResolver(roomSchemaUpdateForm),
-    // resolver: zodResolver(
-    //   roomSchemaUpdateForm.transform((data) => ({
-    //     ...data,
-    //     number:
-    //       typeof data.number === "string" ? Number(data.number) : data.number,
-    //   }))
-    // ),
-  });
-
-  const onSubmit = async (data: iUpdateRoom) => {
-    console.log("AAAAAAAA", data);
-    console.log("Data before submission:", data);
-    console.log("Type of 'number' field:", typeof data.number);
-  };
 
   return (
     <StyledDashboard>

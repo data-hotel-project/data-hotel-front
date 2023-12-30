@@ -6,7 +6,7 @@ export const StyledButton = styled.button<iButtonStyledProps>`
   font-weight: 600;
   border-radius: 4px;
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.4s;
 
   ${({ $backgroundColor, $fontColor, size, $borderColor }) => css`
     background-color: ${$backgroundColor || "var(--primary-dark-active)"};

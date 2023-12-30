@@ -22,7 +22,7 @@ export interface iInputProps {
   register: UseFormRegister<any>;
   type: string;
   showPass?: boolean;
-  defaultValue?: string | number;
+  defaultValue?: string | number | null;
   isTypeNumber?: boolean;
 }
 
@@ -106,6 +106,8 @@ export interface iRoom {
   full_url3: string;
   full_url4: string;
   full_url5: string;
+
+  [key: string]: string | number | null;
 }
 
 export interface iUpdateRoom {

@@ -103,7 +103,7 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
     if (hotelId) {
       retrieveHotel(hotelId);
     }
-  }, [token]);
+  }, [token, rooms]);
 
   // ---------------------ROOM-------------------------
 
@@ -139,9 +139,9 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
     }
   };
 
-  const retrieveRoom = async () => {
+  const retrieveRoom = async (roomId: string) => {
     try {
-      const response = await api.get(`/room/${room?.id}`);
+      const response = await api.get(`/room/${roomId}`);
       setRoom(response.data);
     } catch (error) {
       console.log(error);

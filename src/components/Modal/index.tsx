@@ -10,7 +10,10 @@ export const Modal = ({ title, children }: ModalProps) => {
   const { closeModal, showModal } = useAuth();
 
   return (
-    <StyledModal onClick={showModal != "" ? closeModal : undefined}>
+    <StyledModal
+      onClick={showModal != "" ? closeModal : undefined}
+      className="boxModal"
+    >
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <header className="header">
           <h4 className="title">{title}</h4>

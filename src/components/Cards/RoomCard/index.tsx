@@ -12,6 +12,7 @@ import {
   StyledRoomCard,
   SubTitle,
 } from "./style";
+import { useHotel } from "../../../contexts";
 
 interface iRoomCardProps {
   room: iRoom;
