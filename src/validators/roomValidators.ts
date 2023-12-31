@@ -16,16 +16,27 @@ export const roomSchemaUpdateForm = z.object({
   status: z.string().optional(),
   departure_date: z.string().optional(),
   guest: z.string().optional(),
-  image: z.unknown().refine(
-    (value) => {
-      return value instanceof FileList;
-    },
-    { message: "Invalid image files" }
-  ),
+  image: z
+    .custom((value) => value instanceof FileList, {
+      message: "Invalid image files",
+    })
+    .optional(),
   image2: z.string().optional(),
   image3: z.string().optional(),
   image4: z.string().optional(),
   image5: z.string().optional(),
 });
 
-export type TRoomUpdateData = z.infer<typeof roomSchemaUpdateForm>;
+export type TRoomUpdateData = {
+  number?: number | undefined;
+  quantity?: number | undefined;
+  status?: string | undefined;
+  departure_date?: string | undefined;
+  guest?: string | undefined;
+  image?: FileList | undefined;
+  image2?: string | undefined;
+  image3?: string | undefined;
+  image4?: string | undefined;
+  image5?: string | undefined;
+  [key: string]: number | string | undefined | unknown;
+};

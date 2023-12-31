@@ -19,11 +19,11 @@ const UpdateRoomForm = ({ currentRoom }: iRoomUpdateForm) => {
   const [imagesField, setImagesField] = useState<string[]>([""]);
   const [selectedFile, setSelectedFile] = useState<any>();
 
-  // const getFileName = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const fileName = e.target.files?.[0]?.name;
+  const getFileName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
 
-  //   setSelectedFile(fileName);
-  // };
+    setSelectedFile(file);
+  };
 
   const { hotelId } = useAuth();
   const { listRoomsByHotel, updateRoom } = useHotel();
@@ -41,14 +41,28 @@ const UpdateRoomForm = ({ currentRoom }: iRoomUpdateForm) => {
     resolver: zodResolver(roomSchemaUpdateForm),
   });
 
+  const buildFormData = (data: TRoomUpdateData): FormData => {
+    const formData = new FormData();
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (value !== undefined && value !== "") {
+        if (typeof value === "number" || typeof value === "string") {
+          formData.append(key, String(value));
+        } else if (typeof value === "object") {
+          formData.append(key, value as Blob);
+        }
+      }
+    });
+
+    return formData;
+  };
+
   const onSubmit = async (data: TRoomUpdateData) => {
-    const filteredData = Object.fromEntries(
-      Object.entries(data).filter(([_, value]) => value !== "")
-    );
+    const updatedData = { ...data, image: selectedFile };
 
-    console.log(filteredData);
+    const formData = buildFormData(updatedData);
 
-    updateRoom(filteredData, currentRoom.id);
+    updateRoom(formData, currentRoom.id);
   };
 
   return (
@@ -118,7 +132,7 @@ const UpdateRoomForm = ({ currentRoom }: iRoomUpdateForm) => {
         errorMessage={errors.image?.message}
         register={register}
         getValues={getValues}
-        // onChange={getFileName}
+        onChange={getFileName}
       />
 
       {imagesField.map((_, i) => {

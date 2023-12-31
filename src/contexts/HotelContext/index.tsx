@@ -148,16 +148,20 @@ export const HotelProvider = ({ children }: IChildrenProps) => {
     }
   };
 
-  const updateRoom = async (formData: TRoomUpdateData, roomId: string) => {
+  const updateRoom = async (
+    formData: TRoomUpdateData | FormData,
+    roomId: string
+  ) => {
     try {
-      console.log(formData, roomId);
-
       const response = await api.patch(`/room/${roomId}/`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setRoom(response.data);
+      listRoomsByHotel(hotelId);
+
+      toast.success("Room updated successfully");
       navigate(`/employeeDashboard`);
     } catch (error) {
       console.log(error);
