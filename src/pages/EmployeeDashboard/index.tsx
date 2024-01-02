@@ -7,8 +7,9 @@ import { RoomCard } from "../../components/Cards/RoomCard";
 import UpdateRoomForm from "../../components/Forms/UpdateRoomForm";
 import Header from "../../components/Header";
 import { Modal } from "../../components/Modal";
-import { useAuth, useHotel } from "../../contexts";
-import { iRoom } from "../../interface";
+import { iRoom } from "../../assets/interface";
+import { useHotel } from "../../contexts/HotelContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 export const EmployeeDashboard = () => {
   const { hotelId, showModal, setShowModal } = useAuth();
@@ -37,7 +38,7 @@ export const EmployeeDashboard = () => {
           </BoxAdd> */}
 
           <UlContainer>
-            {rooms.map((room) => {
+            {rooms?.map((room) => {
               return (
                 <RoomCard
                   key={room.id}

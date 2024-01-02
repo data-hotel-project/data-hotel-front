@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { iRoom } from "../../../interface";
+import { iRoom } from "../../../assets/interface";
 import {
   TRoomUpdateData,
   roomSchemaUpdateForm,
@@ -9,7 +9,8 @@ import {
 import Button from "../../Button";
 import Input from "../../Input";
 import { BoxButtonAddImage, StyledForm } from "./style";
-import { useAuth, useHotel } from "../../../contexts";
+import { useHotel } from "../../../contexts/HotelContext";
+import { useAuth } from "../../../contexts/AuthContext";
 
 interface iRoomUpdateForm {
   currentRoom: iRoom;

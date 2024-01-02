@@ -2,7 +2,7 @@ import { Eye, EyeSlash } from "phosphor-react";
 import { ReactNode, useEffect, useState } from "react";
 import { ErrorMessage } from "../ParagraphError";
 import InputGroup from "./inputGroup";
-import { iInputProps } from "../../interface";
+import { iInputProps } from "../../assets/interface";
 
 const Input = ({
   errorMessage,

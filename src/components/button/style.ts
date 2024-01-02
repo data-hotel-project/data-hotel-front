@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { iButtonStyledProps } from "../../interface";
+import { iButtonStyledProps } from "../../assets/interface";
 
 export const StyledButton = styled.button<iButtonStyledProps>`
   font-family: var(--font-family-3); // ajustarr

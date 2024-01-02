@@ -1,4 +1,4 @@
-import { useAuth } from "../../contexts";
+import { useAuth } from "../../contexts/AuthContext";
 import { StyledModal } from "./styles";
 
 interface ModalProps {

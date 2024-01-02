@@ -1,5 +1,5 @@
 import { NavigateFunction } from "react-router-dom";
-import { iHotel, iReservation, iRoom } from "../../interface";
+import { iHotel, iReservation, iRoom } from "../../assets/interface";
 import {
   THotelCreateFormData,
   THotelUpdateFormData,
